@@ -14,37 +14,37 @@ function Menu() {
   const navigate = useNavigate();
 
   const menuItems = [
-    { label: "QUICK CHECK", path: "/quick-check", icon: "🔍", color: "from-red-600 via-orange-500 to-amber-500" },
-    { label: "ADD ASSET", path: "/add", icon: "➕", color: "from-orange-600 via-red-500 to-red-600" },
-    { label: "ASSIGN", path: "/assign", icon: "👤", color: "from-amber-600 via-orange-500 to-red-500" },
-    { label: "MANAGE ASSET", path: "/out", icon: "📤", color: "from-red-700 via-orange-600 to-amber-600" },
-    { label: "EMPLOYEES", path: "/employees", icon: "👥", color: "from-orange-700 via-red-600 to-orange-600" },
-    { label: "ASSETS", path: "/assets", icon: "📦", color: "from-red-600 via-orange-600 to-yellow-600" },
-    { label: "REPAIR LIST", path: "/repair", icon: "🔧", color: "from-amber-600 via-orange-600 to-red-600" },
-    { label: "EXIT CLEARANCE", path: "/clearance", icon: "✅", color: "from-orange-600 via-red-600 to-amber-600" },
+    { label: "QUICK CHECK", path: "/quick-check", icon: "🔍", color: "from-white via-orange-100 to-orange-200" },
+    { label: "ADD ASSET", path: "/add", icon: "➕", color: "from-orange-100 via-white to-orange-100" },
+    { label: "ASSIGN", path: "/assign", icon: "👤", color: "from-orange-50 via-orange-100 to-orange-200" },
+    { label: "MANAGE ASSET", path: "/out", icon: "📤", color: "from-white via-red-100 to-orange-150" },
+    { label: "EMPLOYEES", path: "/employees", icon: "👥", color: "from-orange-100 via-white to-red-100" },
+    { label: "ASSETS", path: "/assets", icon: "📦", color: "from-white via-orange-100 to-orange-200" },
+    { label: "REPAIR LIST", path: "/repair", icon: "🔧", color: "from-orange-100 via-orange-200 to-red-100" },
+    { label: "EXIT CLEARANCE", path: "/clearance", icon: "✅", color: "from-orange-50 via-white to-orange-100" },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-red-950 to-slate-950 py-12 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-orange-50 py-12 px-4">
       {/* Animated background elements */}
-      <div className="fixed inset-0 opacity-10">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-1/2 w-96 h-96 bg-amber-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+      <div className="fixed inset-0 opacity-5">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-orange-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-1/2 w-96 h-96 bg-amber-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
       </div>
 
       {/* Header Section */}
       <div className="relative z-10 text-center mb-16">
-        <div className="inline-block mb-8 p-2 bg-gradient-to-br from-red-500 to-orange-600 rounded-full shadow-2xl overflow-hidden hover:shadow-red-500/50 transition-all duration-300">
-          <div className="bg-slate-950 rounded-full p-1">
+        <div className="inline-block mb-8 p-2 bg-gradient-to-br from-orange-300 to-red-300 rounded-full shadow-lg overflow-hidden hover:shadow-orange-300/50 transition-all duration-300">
+          <div className="bg-white rounded-full p-1">
             <img src="/company_icon.png" alt="Company Logo" className="w-28 h-28 object-cover rounded-full" />
           </div>
         </div>
-        <h1 className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent mb-4">
+        <h1 className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-orange-600 via-red-500 to-orange-500 bg-clip-text text-transparent mb-4">
           IT Asset Tracker
         </h1>
-        <div className="h-1 w-32 mx-auto bg-gradient-to-r from-red-500 via-orange-500 to-amber-500 rounded-full mb-6"></div>
-        <p className="text-xl text-orange-300 font-light tracking-wide">Manage your company's assets efficiently</p>
+        <div className="h-1 w-32 mx-auto bg-gradient-to-r from-orange-400 via-red-400 to-orange-300 rounded-full mb-6"></div>
+        <p className="text-xl text-orange-700 font-light tracking-wide">Manage your company's assets efficiently</p>
       </div>
 
       {/* Menu Grid */}
@@ -54,14 +54,14 @@ function Menu() {
             <button
               key={item.path}
               onClick={() => navigate(item.path)}
-              className={`group relative overflow-hidden rounded-xl p-6 bg-gradient-to-br ${item.color} text-white shadow-xl hover:shadow-2xl transform hover:scale-110 transition-all duration-300 active:scale-95 border border-white/10`}
+              className={`group relative overflow-hidden rounded-xl p-6 bg-gradient-to-br ${item.color} text-orange-900 shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 active:scale-95 border border-orange-200`}
             >
               {/* Shimmer effect on hover */}
-              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -translate-x-full group-hover:translate-x-full" style={{animation: 'shimmer 0.6s ease-in-out'}}></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/30 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -translate-x-full group-hover:translate-x-full" style={{animation: 'shimmer 0.6s ease-in-out'}}></div>
               
               {/* Animated border */}
               <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
-                background: 'linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent)',
+                background: 'linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent)',
                 animation: 'borderFlow 2s infinite'
               }}></div>
               
@@ -70,8 +70,8 @@ function Menu() {
                 <div className="text-5xl mb-3 transform group-hover:scale-125 group-hover:rotate-12 transition-transform duration-300">
                   {item.icon}
                 </div>
-                <h3 className="text-sm font-bold tracking-widest uppercase leading-tight">{item.label}</h3>
-                <div className="mt-3 h-0.5 w-0 group-hover:w-8 mx-auto bg-white transition-all duration-300 rounded-full"></div>
+                <h3 className="text-sm font-semibold tracking-widest uppercase leading-tight">{item.label}</h3>
+                <div className="mt-3 h-0.5 w-0 group-hover:w-8 mx-auto bg-orange-700 transition-all duration-300 rounded-full"></div>
               </div>
             </button>
           ))}
@@ -79,7 +79,7 @@ function Menu() {
       </div>
 
       {/* Footer */}
-      <div className="relative z-10 text-center mt-20 text-orange-400/60 text-sm font-light">
+      <div className="relative z-10 text-center mt-20 text-orange-600/60 text-sm font-light">
         <p>Version 1.0 • Premium Asset Management System</p>
       </div>
     </div>
