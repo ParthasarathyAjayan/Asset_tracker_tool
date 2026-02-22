@@ -18,16 +18,45 @@
   }
 }
 
+/* Float animation for white gradient bricks */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translateY(-30px) translateX(15px);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-50px) translateX(-20px);
+    opacity: 0.3;
+  }
+  75% {
+    transform: translateY(-25px) translateX(25px);
+    opacity: 0.4;
+  }
+}
+
 .animate-blob {
   animation: blob 7s infinite;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1s;
 }
 
 .animation-delay-2000 {
   animation-delay: 2s;
 }
 
+.animation-delay-3000 {
+  animation-delay: 3s;
+}
+
 .animation-delay-4000 {
   animation-delay: 4s;
+}
 }
 
 /* Shimmer animation */
