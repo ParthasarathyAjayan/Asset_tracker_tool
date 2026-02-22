@@ -14,48 +14,64 @@ function Menu() {
   const navigate = useNavigate();
 
   const menuItems = [
-    { label: "QUICK CHECK", path: "/quick-check", icon: "🔍", color: "from-cyan-500 to-blue-600" },
-    { label: "ADD ASSET", path: "/add", icon: "➕", color: "from-blue-500 to-blue-600" },
-    { label: "ASSIGN", path: "/assign", icon: "👤", color: "from-purple-500 to-purple-600" },
-    { label: "MANAGE ASSET", path: "/out", icon: "📤", color: "from-orange-500 to-orange-600" },
-    { label: "EMPLOYEES", path: "/employees", icon: "👥", color: "from-green-500 to-green-600" },
-    { label: "ASSETS", path: "/assets", icon: "📦", color: "from-indigo-500 to-indigo-600" },
-    { label: "REPAIR LIST", path: "/repair", icon: "🔧", color: "from-red-500 to-red-600" },
-    { label: "EXIT CLEARANCE", path: "/clearance", icon: "✅", color: "from-teal-500 to-teal-600" },
+    { label: "QUICK CHECK", path: "/quick-check", icon: "🔍", color: "from-red-600 via-orange-500 to-amber-500" },
+    { label: "ADD ASSET", path: "/add", icon: "➕", color: "from-orange-600 via-red-500 to-red-600" },
+    { label: "ASSIGN", path: "/assign", icon: "👤", color: "from-amber-600 via-orange-500 to-red-500" },
+    { label: "MANAGE ASSET", path: "/out", icon: "📤", color: "from-red-700 via-orange-600 to-amber-600" },
+    { label: "EMPLOYEES", path: "/employees", icon: "👥", color: "from-orange-700 via-red-600 to-orange-600" },
+    { label: "ASSETS", path: "/assets", icon: "📦", color: "from-red-600 via-orange-600 to-yellow-600" },
+    { label: "REPAIR LIST", path: "/repair", icon: "🔧", color: "from-amber-600 via-orange-600 to-red-600" },
+    { label: "EXIT CLEARANCE", path: "/clearance", icon: "✅", color: "from-orange-600 via-red-600 to-amber-600" },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 py-12 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-red-950 to-slate-950 py-12 px-4">
+      {/* Animated background elements */}
+      <div className="fixed inset-0 opacity-10">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-1/2 w-96 h-96 bg-amber-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+      </div>
+
       {/* Header Section */}
-      <div className="text-center mb-12">
-        <div className="inline-block mb-6 p-0 bg-white rounded-full shadow-lg overflow-hidden">
-          <img src="/company_icon.png" alt="Company Logo" className="w-24 h-24 object-cover rounded-full scale-105" />
+      <div className="relative z-10 text-center mb-16">
+        <div className="inline-block mb-8 p-2 bg-gradient-to-br from-red-500 to-orange-600 rounded-full shadow-2xl overflow-hidden hover:shadow-red-500/50 transition-all duration-300">
+          <div className="bg-slate-950 rounded-full p-1">
+            <img src="/company_icon.png" alt="Company Logo" className="w-28 h-28 object-cover rounded-full" />
+          </div>
         </div>
-        <h1 className="text-5xl md:text-6xl font-bold text-white mb-2">
+        <h1 className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent mb-4">
           IT Asset Tracker
         </h1>
-        <p className="text-xl text-blue-200">Manage your company's assets efficiently</p>
+        <div className="h-1 w-32 mx-auto bg-gradient-to-r from-red-500 via-orange-500 to-amber-500 rounded-full mb-6"></div>
+        <p className="text-xl text-orange-300 font-light tracking-wide">Manage your company's assets efficiently</p>
       </div>
 
       {/* Menu Grid */}
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      <div className="relative z-10 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {menuItems.map((item) => (
             <button
               key={item.path}
               onClick={() => navigate(item.path)}
-              className={`group relative overflow-hidden rounded-2xl p-8 bg-gradient-to-br ${item.color} text-white shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 active:scale-95`}
+              className={`group relative overflow-hidden rounded-xl p-6 bg-gradient-to-br ${item.color} text-white shadow-xl hover:shadow-2xl transform hover:scale-110 transition-all duration-300 active:scale-95 border border-white/10`}
             >
-              {/* Animated background */}
-              <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+              {/* Shimmer effect on hover */}
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -translate-x-full group-hover:translate-x-full" style={{animation: 'shimmer 0.6s ease-in-out'}}></div>
+              
+              {/* Animated border */}
+              <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
+                background: 'linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent)',
+                animation: 'borderFlow 2s infinite'
+              }}></div>
               
               {/* Content */}
               <div className="relative z-10 text-center">
-                <div className="text-5xl mb-4 transform group-hover:scale-110 group-hover:-rotate-12 transition-transform duration-300">
+                <div className="text-5xl mb-3 transform group-hover:scale-125 group-hover:rotate-12 transition-transform duration-300">
                   {item.icon}
                 </div>
-                <h3 className="text-lg font-bold tracking-wide">{item.label}</h3>
-                <div className="mt-3 h-1 w-0 group-hover:w-12 mx-auto bg-white transition-all duration-300 rounded-full"></div>
+                <h3 className="text-sm font-bold tracking-widest uppercase leading-tight">{item.label}</h3>
+                <div className="mt-3 h-0.5 w-0 group-hover:w-8 mx-auto bg-white transition-all duration-300 rounded-full"></div>
               </div>
             </button>
           ))}
@@ -63,8 +79,8 @@ function Menu() {
       </div>
 
       {/* Footer */}
-      <div className="text-center mt-16 text-blue-300 text-sm">
-        <p>Version 1.0 • Asset Management System</p>
+      <div className="relative z-10 text-center mt-20 text-orange-400/60 text-sm font-light">
+        <p>Version 1.0 • Premium Asset Management System</p>
       </div>
     </div>
   );
