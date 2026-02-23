@@ -9,93 +9,103 @@ import Repair from "./pages/Repair";
 import Clearance from "./pages/Clearance";
 import QuickCheck from "./pages/QuickCheck";
 import { Button } from "./components";
+import JobWorld3DLogo from "./components/JobWorld3DLogo";
 
 function Menu() {
   const navigate = useNavigate();
 
   const menuItems = [
-    { label: "QUICK CHECK", path: "/quick-check", icon: "🔍", color: "from-amber-700 via-orange-600 to-white" },
-    { label: "ADD ASSET", path: "/add", icon: "➕", color: "from-orange-700 via-amber-600 to-white" },
-    { label: "ASSIGN", path: "/assign", icon: "👤", color: "from-amber-800 via-orange-700 to-white" },
-    { label: "MANAGE ASSET", path: "/out", icon: "📤", color: "from-orange-800 via-amber-700 to-white" },
-    { label: "EMPLOYEES", path: "/employees", icon: "👥", color: "from-amber-700 via-orange-600 to-white" },
-    { label: "ASSETS", path: "/assets", icon: "📦", color: "from-orange-700 via-amber-600 to-white" },
-    { label: "REPAIR LIST", path: "/repair", icon: "🔧", color: "from-amber-800 via-orange-700 to-white" },
-    { label: "EXIT CLEARANCE", path: "/clearance", icon: "✅", color: "from-orange-700 via-amber-600 to-white" },
+    { label: "Quick Check", path: "/quick-check", icon: "🔍", desc: "Fast asset lookup", color: "bg-gradient-to-br from-amber-600 to-orange-700" },
+    { label: "Add Asset", path: "/add", icon: "➕", desc: "Register new asset", color: "bg-gradient-to-br from-orange-600 to-red-700" },
+    { label: "Assign Asset", path: "/assign", icon: "👤", desc: "Assign to employee", color: "bg-gradient-to-br from-amber-700 to-orange-800" },
+    { label: "Manage Asset", path: "/out", icon: "📤", desc: "Return/Repair/Retire", color: "bg-gradient-to-br from-orange-700 to-red-800" },
+    { label: "Employees", path: "/employees", icon: "👥", desc: "Employee management", color: "bg-gradient-to-br from-amber-600 to-orange-700" },
+    { label: "Assets", path: "/assets", icon: "📦", desc: "View all assets", color: "bg-gradient-to-br from-orange-600 to-red-700" },
+    { label: "Repair List", path: "/repair", icon: "🔧", desc: "Track repairs", color: "bg-gradient-to-br from-amber-700 to-orange-800" },
+    { label: "Exit Clearance", path: "/clearance", icon: "✅", desc: "Employee exit", color: "bg-gradient-to-br from-orange-700 to-red-800" },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-amber-950 to-orange-950 py-12 px-4 overflow-hidden relative">
-      {/* Animated glowing bubbles background */}
-      <div className="fixed inset-0">
-        <div className="absolute top-20 left-20 w-96 h-96 bg-amber-700 rounded-full mix-blend-multiply filter blur-3xl animate-blob opacity-100" style={{filter: 'blur(80px)', opacity: 0.95}}></div>
-        <div className="absolute top-32 left-32 w-80 h-80 bg-amber-600 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-1000" style={{filter: 'blur(80px)', opacity: 0.85, animationDelay: '1s'}}></div>
-        <div className="absolute top-40 -right-40 w-96 h-96 bg-orange-700 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000" style={{filter: 'blur(80px)', opacity: 0.85, animationDelay: '2s'}}></div>
-        <div className="absolute top-48 -right-32 w-72 h-72 bg-orange-600 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2500" style={{filter: 'blur(80px)', opacity: 0.8, animationDelay: '2.5s'}}></div>
-        <div className="absolute -bottom-32 left-1/3 w-96 h-96 bg-amber-800 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000" style={{filter: 'blur(80px)', opacity: 0.8, animationDelay: '4s'}}></div>
-        <div className="absolute -bottom-24 left-2/5 w-80 h-80 bg-amber-700 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-3500" style={{filter: 'blur(80px)', opacity: 0.75, animationDelay: '3.5s'}}></div>
-        <div className="absolute top-1/2 right-20 w-80 h-80 bg-orange-800 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-1000" style={{filter: 'blur(80px)', opacity: 0.9, animationDelay: '1s'}}></div>
-        <div className="absolute top-1/2 right-32 w-64 h-64 bg-orange-700 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-1500" style={{filter: 'blur(80px)', opacity: 0.8, animationDelay: '1.5s'}}></div>
-        <div className="absolute bottom-40 -left-40 w-80 h-80 bg-amber-700 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-3000" style={{filter: 'blur(80px)', opacity: 0.85, animationDelay: '3s'}}></div>
-        <div className="absolute bottom-32 -left-32 w-72 h-72 bg-amber-600 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-3500" style={{filter: 'blur(80px)', opacity: 0.8, animationDelay: '3.5s'}}></div>
-        <div className="absolute top-1/4 right-1/4 w-72 h-72 bg-orange-700 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2500" style={{filter: 'blur(80px)', opacity: 0.8, animationDelay: '2.5s'}}></div>
-        <div className="absolute top-1/3 right-1/3 w-60 h-60 bg-orange-600 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000" style={{filter: 'blur(80px)', opacity: 0.75, animationDelay: '2s'}}></div>
-        <div className="absolute top-2/3 left-1/4 w-68 h-68 bg-amber-800 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-3000" style={{filter: 'blur(80px)', opacity: 0.8, animationDelay: '3s'}}></div>
-        <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-orange-700 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-1500" style={{filter: 'blur(80px)', opacity: 0.75, animationDelay: '1.5s'}}></div>
-        
-        {/* White gradient overlay 30% */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white via-transparent to-white mix-blend-overlay" style={{opacity: 0.3}}></div>
-      </div>
+    <div className="min-h-screen bg-white relative">
+      {/* Subtle background pattern */}
+      <div className="fixed inset-0 pointer-events-none" style={{
+        backgroundImage: `
+          radial-gradient(circle at 20% 50%, rgba(249, 115, 22, 0.05) 0%, transparent 50%),
+          radial-gradient(circle at 80% 80%, rgba(217, 119, 6, 0.05) 0%, transparent 50%),
+          linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(249, 115, 22, 0.02) 100%)
+        `,
+        zIndex: 0
+      }}></div>
+      
+      {/* Dot pattern */}
+      <div className="fixed inset-0 pointer-events-none" style={{
+        backgroundImage: `radial-gradient(circle, rgba(249, 115, 22, 0.08) 1px, transparent 1px)`,
+        backgroundSize: '50px 50px',
+        zIndex: 0
+      }}></div>
+      {/* Header */}
+      <header className="bg-gradient-to-r from-slate-900 via-red-900 to-amber-900 text-white shadow-2xl">
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 bg-white rounded-full shadow-lg p-2 flex items-center justify-center overflow-hidden">
+                <img src="/company_icon.png" alt="JobWorld" className="w-full h-full object-cover rounded-full" />
+              </div>
+              <div>
+                <h1 className="text-4xl md:text-5xl font-bold">IT Asset Tracker</h1>
+                <p className="text-orange-200 text-sm mt-1">Manage company assets efficiently</p>
+              </div>
+            </div>
+          </div>
+          <div className="h-1 w-24 bg-gradient-to-r from-orange-400 to-amber-500 rounded-full"></div>
+        </div>
+      </header>
 
-      {/* Header Section */}
-      <div className="relative z-10 text-center mb-16">
-        <div className="inline-block mb-8 p-2 bg-gradient-to-br from-orange-700 via-amber-700 to-amber-800 rounded-full shadow-2xl overflow-hidden hover:shadow-amber-700/50 transition-all duration-300">
-          <div className="bg-slate-950 rounded-full p-1">
-            <img src="/company_icon.png" alt="Company Logo" className="w-28 h-28 object-cover rounded-full" />
+      <JobWorld3DLogo />
+
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-6 py-16 relative z-10">
+        {/* Menu Grid */}
+        <div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {menuItems.map((item) => (
+              <button
+                key={item.path}
+                onClick={() => navigate(item.path)}
+                className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 active:translate-y-0"
+              >
+                {/* Card Background */}
+                <div className={`${item.color} h-full p-8 text-white relative overflow-hidden`}>
+                  {/* Shine effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -translate-x-full group-hover:translate-x-full" style={{animation: 'shimmer 0.6s ease-in-out'}}></div>
+                  
+                  {/* Content */}
+                  <div className="relative z-10 text-center h-full flex flex-col items-center justify-center">
+                    <div className="text-6xl mb-4 transform group-hover:scale-125 group-hover:rotate-6 transition-transform duration-300">
+                      {item.icon}
+                    </div>
+                    <h3 className="text-lg font-bold mb-2 leading-tight">{item.label}</h3>
+                    <p className="text-sm text-white/80 mb-4">{item.desc}</p>
+                    <div className="mt-auto pt-4 border-t border-white/30 w-full">
+                      <span className="text-xs font-semibold uppercase tracking-wider text-white/90">Access →</span>
+                    </div>
+                  </div>
+                </div>
+              </button>
+            ))}
           </div>
         </div>
-        <h1 className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-white via-orange-100 to-white bg-clip-text text-transparent mb-4 drop-shadow-lg" style={{textShadow: '0 4px 20px rgba(255, 255, 255, 0.5), 0 8px 32px rgba(239, 68, 68, 0.3)'}}>
-          IT Asset Tracker
-        </h1>
-        <div className="h-1 w-32 mx-auto bg-gradient-to-r from-orange-400 via-red-400 to-amber-400 rounded-full mb-6"></div>
-        <p className="text-xl text-orange-200 font-light tracking-wide">Manage your company's assets efficiently</p>
-      </div>
-
-      {/* Menu Grid */}
-      <div className="relative z-10 max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {menuItems.map((item) => (
-            <button
-              key={item.path}
-              onClick={() => navigate(item.path)}
-              className={`group relative overflow-hidden rounded-xl p-6 bg-gradient-to-br ${item.color} text-white shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 active:scale-95 border border-white/20`}
-            >
-              {/* Shimmer effect with white gradient on hover */}
-              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/30 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -translate-x-full group-hover:translate-x-full" style={{animation: 'shimmer 0.6s ease-in-out'}}></div>
-              
-              {/* Animated border with white */}
-              <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
-                background: 'linear-gradient(45deg, transparent, rgba(255,255,255,0.25), transparent)',
-                animation: 'borderFlow 2s infinite'
-              }}></div>
-              
-              {/* Content */}
-              <div className="relative z-10 text-center">
-                <div className="text-5xl mb-3 transform group-hover:scale-125 group-hover:rotate-12 transition-transform duration-300">
-                  {item.icon}
-                </div>
-                <h3 className="text-sm font-bold tracking-widest uppercase leading-tight">{item.label}</h3>
-                <div className="mt-3 h-0.5 w-0 group-hover:w-8 mx-auto bg-white transition-all duration-300 rounded-full"></div>
-              </div>
-            </button>
-          ))}
-        </div>
-      </div>
+      </main>
 
       {/* Footer */}
-      <div className="relative z-10 text-center mt-20 text-orange-300/60 text-sm font-light">
-        <p>Version 1.0 • Premium Asset Management System</p>
-      </div>
+      <footer className="bg-gray-50 border-t border-gray-200 mt-20">
+        <div className="max-w-7xl mx-auto px-6 py-8 text-center">
+          <p className="text-gray-600 text-sm">
+            <span className="font-semibold">IT Asset Tracker</span> • Premium Asset Management System
+          </p>
+          <p className="text-gray-500 text-xs mt-2">Version 1.0 • All rights reserved</p>
+        </div>
+      </footer>
     </div>
   );
 }
