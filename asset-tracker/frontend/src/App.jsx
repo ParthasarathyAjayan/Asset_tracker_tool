@@ -44,9 +44,14 @@ function Menu() {
         zIndex: 0
       }}></div>
 
-      {/* Header - Frosted Glass White */}
+      {/* Header - Frosted Glass White with Skeuomorphic Depth */}
       <header className="backdrop-blur-2xl bg-white/40 shadow-lg relative overflow-hidden border border-white/60" style={{
-        boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 10px 30px rgba(0, 0, 0, 0.08)'
+        boxShadow: `
+          inset 0 1px 0 rgba(255,255,255,0.8),
+          inset 0 -1px 1px rgba(0,0,0,0.05),
+          0 10px 30px rgba(0,0,0,0.08),
+          0 1px 3px rgba(0,0,0,0.1)
+        `
       }}>
         <div className="absolute inset-0 opacity-5" style={{
           backgroundImage: `linear-gradient(45deg, rgba(0,0,0,0.03) 25%, transparent 25%, transparent 50%, rgba(0,0,0,0.03) 50%, rgba(0,0,0,0.03) 75%, transparent 75%, transparent)`,
@@ -110,24 +115,39 @@ function Menu() {
                   transformStyle: 'preserve-3d',
                 }}
                 >
-                  {/* Back shadow layer */}
-                  <div className="absolute inset-0 rounded-3xl bg-black/40 blur-xl" style={{
-                    transform: 'translateZ(-30px)',
-                    zIndex: -1
+                  {/* Back shadow layer - Skeuomorphic depth */}
+                  <div className="absolute inset-0 rounded-3xl" style={{
+                    background: `radial-gradient(ellipse at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 70%, transparent 100%)`,
+                    transform: 'translateZ(-40px)',
+                    zIndex: -1,
+                    filter: 'blur(20px)'
                   }}></div>
                   
-                  {/* Main card */}
-                  <div className={`${item.color} h-full p-4 sm:p-6 lg:p-8 text-white relative overflow-hidden flex flex-col justify-between min-h-[120px] sm:min-h-[140px] rounded-3xl shadow-2xl hover:shadow-2xl transition-all duration-300`}
+                  {/* Main card with skeuomorphic bevel and inset */}
+                  <div className={`${item.color} h-full p-4 sm:p-6 lg:p-8 text-white relative overflow-hidden flex flex-col justify-between min-h-[120px] sm:min-h-[140px] rounded-3xl transition-all duration-300`}
                     style={{
                       transformStyle: 'preserve-3d',
                       transform: 'translateZ(0px)',
+                      boxShadow: `
+                        inset 0 1px 0 rgba(255,255,255,0.3),
+                        inset 0 -1px 0 rgba(0,0,0,0.2),
+                        0 15px 35px rgba(0,0,0,0.15),
+                        0 5px 15px rgba(0,0,0,0.2)
+                      `
                     }}
                   >
-                    {/* Shine effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -translate-x-full group-hover:translate-x-full" style={{
-                      animation: 'shimmer 0.6s ease-in-out',
+                    {/* Top highlight bevel */}
+                    <div className="absolute inset-x-0 top-0 h-0.5 rounded-t-3xl opacity-50" style={{
+                      background: 'linear-gradient(to right, rgba(255,255,255,0.2), rgba(255,255,255,0.05))',
                       transformStyle: 'preserve-3d',
-                      transform: 'translateZ(10px)'
+                      transform: 'translateZ(1px)'
+                    }}></div>
+
+                    {/* Shine effect - Enhanced skeuomorphic */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none" style={{
+                      animation: 'shimmer 0.8s ease-in-out',
+                      transformStyle: 'preserve-3d',
+                      transform: 'translateZ(5px)'
                     }}></div>
                     
                     {/* Content */}
@@ -154,9 +174,13 @@ function Menu() {
         </div>
       </main>
 
-      {/* Footer - Frosted Glass White */}
+      {/* Footer - Frosted Glass White with Skeuomorphic Depth */}
       <footer className="backdrop-blur-2xl bg-white/40 border-t border-white/60" style={{
-        boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.6)'
+        boxShadow: `
+          inset 0 1px 0 rgba(255,255,255,0.8),
+          inset 0 -1px 1px rgba(0,0,0,0.05),
+          0 -10px 30px rgba(0,0,0,0.08)
+        `
       }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6 text-center">
           <div className="flex items-center justify-center gap-2 mb-1 sm:mb-2">

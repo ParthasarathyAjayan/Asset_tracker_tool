@@ -25,9 +25,14 @@ export default function PageLayout({ children }) {
         zIndex: 0
       }}></div>
 
-      {/* Header - Frosted Glass White */}
+      {/* Header - Frosted Glass White with Skeuomorphic Depth */}
       <header className="backdrop-blur-2xl bg-white/40 shadow-lg relative overflow-hidden border border-white/60" style={{
-        boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 10px 30px rgba(0, 0, 0, 0.08)'
+        boxShadow: `
+          inset 0 1px 0 rgba(255,255,255,0.8),
+          inset 0 -1px 1px rgba(0,0,0,0.05),
+          0 10px 30px rgba(0,0,0,0.08),
+          0 1px 3px rgba(0,0,0,0.1)
+        `
       }}>
         <div className="absolute inset-0 opacity-5" style={{
           backgroundImage: `linear-gradient(45deg, rgba(0,0,0,0.03) 25%, transparent 25%, transparent 50%, rgba(0,0,0,0.03) 50%, rgba(0,0,0,0.03) 75%, transparent 75%, transparent)`,
@@ -78,9 +83,13 @@ export default function PageLayout({ children }) {
         </div>
       </main>
 
-      {/* Footer - Frosted Glass White */}
+      {/* Footer - Frosted Glass White with Skeuomorphic Depth */}
       <footer className="backdrop-blur-2xl bg-white/40 border-t border-white/60" style={{
-        boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.6)'
+        boxShadow: `
+          inset 0 1px 0 rgba(255,255,255,0.8),
+          inset 0 -1px 1px rgba(0,0,0,0.05),
+          0 -10px 30px rgba(0,0,0,0.08)
+        `
       }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6 text-center">
           <div className="flex items-center justify-center gap-2 mb-1 sm:mb-2">
