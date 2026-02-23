@@ -1,4 +1,7 @@
-const BASE_URL = "http://127.0.0.1:8000";
+// Use relative paths that go through Vite proxy
+// In development: requests to /api/* are proxied to http://127.0.0.1:5000/*
+// In production: requests go directly to the backend
+const BASE_URL = "/api";
 
 export async function fetchCategories() {
   const res = await fetch(`${BASE_URL}/categories`);

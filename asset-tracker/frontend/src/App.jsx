@@ -8,7 +8,7 @@ import Employees from "./pages/Employees";
 import Repair from "./pages/Repair";
 import Clearance from "./pages/Clearance";
 import QuickCheck from "./pages/QuickCheck";
-import { Button } from "./components";
+import { Button, PageLayout } from "./components";
 import JobWorld3DLogo from "./components/JobWorld3DLogo";
 
 function Menu() {
@@ -22,7 +22,7 @@ function Menu() {
     { label: "Employees", path: "/employees", icon: "👥", desc: "Employee management", color: "bg-gradient-to-br from-amber-600 to-orange-700" },
     { label: "Assets", path: "/assets", icon: "📦", desc: "View all assets", color: "bg-gradient-to-br from-orange-600 to-red-700" },
     { label: "Repair List", path: "/repair", icon: "🔧", desc: "Track repairs", color: "bg-gradient-to-br from-amber-700 to-orange-800" },
-    { label: "Exit Clearance", path: "/clearance", icon: "✅", desc: "Employee exit", color: "bg-gradient-to-br from-orange-700 to-red-800" },
+    { label: "Exit Clearance", path: "/clearance", icon: "🔐", desc: "Employee exit", color: "bg-gradient-to-br from-orange-700 to-red-800" },
   ];
 
   return (
@@ -44,51 +44,55 @@ function Menu() {
         zIndex: 0
       }}></div>
       {/* Header */}
-      <header className="bg-gradient-to-r from-slate-900 via-red-900 to-amber-900 text-white shadow-2xl">
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 bg-white rounded-full shadow-lg p-2 flex items-center justify-center overflow-hidden">
-                <img src="/company_icon.png" alt="JobWorld" className="w-full h-full object-cover rounded-full" />
+      <header className="bg-gradient-to-r from-slate-900 via-red-900 to-amber-900 text-white shadow-2xl relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10" style={{
+          backgroundImage: `linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%, transparent)`,
+          backgroundSize: '20px 20px'
+        }}></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-12 relative z-10">
+          <div className="flex items-center justify-between mb-6 sm:mb-8">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                <div className="h-1 w-8 sm:w-12 bg-gradient-to-r from-orange-400 to-yellow-400 rounded-full"></div>
+                <h1 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">JobWorld</h1>
               </div>
-              <div>
-                <h1 className="text-4xl md:text-5xl font-bold">IT Asset Tracker</h1>
-                <p className="text-orange-200 text-sm mt-1">Manage company assets efficiently</p>
-              </div>
+              <h2 className="text-xl sm:text-3xl font-black text-orange-300" style={{
+                fontFamily: '"Arial Black", sans-serif',
+                letterSpacing: '0.08em'
+              }}>
+                INVENTORY PRO
+              </h2>
+              <p className="text-orange-100 text-xs mt-2 sm:mt-3 font-semibold uppercase tracking-widest hidden sm:block">Premium Asset & Inventory Management Platform</p>
             </div>
           </div>
-          <div className="h-1 w-24 bg-gradient-to-r from-orange-400 to-amber-500 rounded-full"></div>
+          <div className="h-1 w-24 sm:w-32 bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-400 rounded-full shadow-lg"></div>
         </div>
+        <JobWorld3DLogo />
       </header>
 
-      <JobWorld3DLogo />
-
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-6 py-16 relative z-10">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-12 relative z-10 flex flex-col">
         {/* Menu Grid */}
         <div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
             {menuItems.map((item) => (
               <button
                 key={item.path}
                 onClick={() => navigate(item.path)}
-                className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 active:translate-y-0"
+                className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 active:translate-y-0"
               >
                 {/* Card Background */}
-                <div className={`${item.color} h-full p-8 text-white relative overflow-hidden`}>
+                <div className={`${item.color} h-full p-6 sm:p-12 text-white relative overflow-hidden`}>
                   {/* Shine effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -translate-x-full group-hover:translate-x-full" style={{animation: 'shimmer 0.6s ease-in-out'}}></div>
                   
                   {/* Content */}
                   <div className="relative z-10 text-center h-full flex flex-col items-center justify-center">
-                    <div className="text-6xl mb-4 transform group-hover:scale-125 group-hover:rotate-6 transition-transform duration-300">
+                    <div className="text-4xl sm:text-6xl mb-2 sm:mb-4 transform group-hover:scale-125 group-hover:rotate-6 transition-transform duration-300">
                       {item.icon}
                     </div>
-                    <h3 className="text-lg font-bold mb-2 leading-tight">{item.label}</h3>
-                    <p className="text-sm text-white/80 mb-4">{item.desc}</p>
-                    <div className="mt-auto pt-4 border-t border-white/30 w-full">
-                      <span className="text-xs font-semibold uppercase tracking-wider text-white/90">Access →</span>
-                    </div>
+                    <h3 className="text-base sm:text-lg font-bold mb-1 sm:mb-2 leading-tight">{item.label}</h3>
+                    <p className="text-xs sm:text-sm text-white/80 hidden sm:block">{item.desc}</p>
                   </div>
                 </div>
               </button>
@@ -97,19 +101,20 @@ function Menu() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-gray-50 border-t border-gray-200 mt-20">
-        <div className="max-w-7xl mx-auto px-6 py-8 text-center">
-          <p className="text-gray-600 text-sm">
-            <span className="font-semibold">IT Asset Tracker</span> • Premium Asset Management System
-          </p>
-          <p className="text-gray-500 text-xs mt-2">Version 1.0 • All rights reserved</p>
+      {/* Footer - Option 2 */}
+      <footer className="bg-gradient-to-r from-slate-900 via-red-900 to-amber-900 mt-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6 text-center border-t border-orange-700">
+          <div className="flex items-center justify-center gap-2 mb-1 sm:mb-2">
+            <div className="h-0.5 w-6 sm:w-8 bg-gradient-to-r from-orange-400 to-transparent"></div>
+            <p className="text-orange-200 text-xs font-bold uppercase tracking-widest">JobWorld Inventory Pro</p>
+            <div className="h-0.5 w-6 sm:w-8 bg-gradient-to-l from-orange-400 to-transparent"></div>
+          </div>
+          <p className="text-orange-100 text-xs">Premium Asset Management System • Version 1.0</p>
         </div>
       </footer>
     </div>
   );
 }
-
 function BackButton() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -136,14 +141,14 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Menu />} />
-        <Route path="/quick-check" element={<><div className="page"><BackButton /></div><QuickCheck /></>} />
-        <Route path="/add" element={<><div className="page"><BackButton /></div><Add /></>} />
-        <Route path="/assign" element={<><div className="page"><BackButton /></div><Assign /></>} />
-        <Route path="/out" element={<><div className="page"><BackButton /></div><Out /></>} />
-        <Route path="/assets" element={<><div className="page"><BackButton /></div><Assets /></>} />
-        <Route path="/employees" element={<><div className="page"><BackButton /></div><Employees /></>} />
-        <Route path="/repair" element={<><div className="page"><BackButton /></div><Repair /></>} />
-        <Route path="/clearance" element={<><div className="page"><BackButton /></div><Clearance /></>} />
+        <Route path="/quick-check" element={<PageLayout><QuickCheck /></PageLayout>} />
+        <Route path="/add" element={<PageLayout><Add /></PageLayout>} />
+        <Route path="/assign" element={<PageLayout><Assign /></PageLayout>} />
+        <Route path="/out" element={<PageLayout><Out /></PageLayout>} />
+        <Route path="/assets" element={<PageLayout><Assets /></PageLayout>} />
+        <Route path="/employees" element={<PageLayout><Employees /></PageLayout>} />
+        <Route path="/repair" element={<PageLayout><Repair /></PageLayout>} />
+        <Route path="/clearance" element={<PageLayout><Clearance /></PageLayout>} />
       </Routes>
     </BrowserRouter>
   );

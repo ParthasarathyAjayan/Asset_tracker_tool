@@ -1,9 +1,10 @@
 export default function JobWorld3DLogo() {
   return (
-    <div style={{
-      position: "fixed",
-      top: "10px",
-      right: "20px",
+    <div className="hidden md:block" style={{
+      position: "absolute",
+      top: "50%",
+      right: "30px",
+      transform: "translateY(-50%)",
       zIndex: 30,
       width: "150px",
       height: "150px",
@@ -83,7 +84,7 @@ export default function JobWorld3DLogo() {
           height: 18px;
           background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4), transparent);
           border-radius: 50%;
-          animation: shadow-pulse 3.3275s ease-in-out infinite;
+          animation: shadow-pulse 4.5s ease-in-out infinite;
           filter: blur(2px);
         }
         
@@ -94,7 +95,7 @@ export default function JobWorld3DLogo() {
           height: 140px;
           background: radial-gradient(circle, rgba(255, 106, 0, 0.3), transparent 70%);
           border-radius: 50%;
-          animation: glow-spin 3.3275s ease-in-out infinite;
+          animation: glow-spin 4.5s ease-in-out infinite;
           box-shadow: inset 0 0 40px rgba(255, 106, 0, 0.2);
         }
         
@@ -104,7 +105,7 @@ export default function JobWorld3DLogo() {
           width: 120px;
           height: 120px;
           transform-style: preserve-3d;
-          animation: bounce-spin 3.3275s ease-in-out infinite;
+          animation: bounce-spin 4.5s ease-in-out infinite;
         }
         
         /* Coin face */

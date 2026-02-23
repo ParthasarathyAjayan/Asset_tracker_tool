@@ -234,3 +234,6 @@ export function EmptyState({ icon = '📦', title, subtitle }) {
     </div>
   );
 }
+
+export { default as JobWorld3DLogo } from './JobWorld3DLogo';
+export { default as PageLayout } from './PageLayout';

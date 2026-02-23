@@ -27,7 +27,11 @@ export default function QuickCheck() {
   async function startBarcodeScanner() {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: "environment" },
+        video: { 
+          facingMode: "environment",
+          width: { ideal: 1280 },
+          height: { ideal: 720 }
+        },
         audio: false
       });
       streamRef.current = stream;
@@ -36,10 +40,18 @@ export default function QuickCheck() {
       setTimeout(() => {
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
+          videoRef.current.play().catch(err => console.error("Play error:", err));
         }
-      }, 0);
+      }, 100);
     } catch (error) {
-      setMessage("Camera permission denied or not available");
+      console.error("Camera error:", error);
+      if (error.name === 'NotAllowedError') {
+        setMessage("Camera permission denied. Please allow camera access in your browser settings.");
+      } else if (error.name === 'NotFoundError') {
+        setMessage("No camera found on this device.");
+      } else {
+        setMessage("Camera permission denied or not available: " + error.message);
+      }
       setMessageType("danger");
     }
   }
@@ -113,19 +125,19 @@ export default function QuickCheck() {
 
   return (
     <div className="page">
-      <div className="mb-8">
-        <h2 className="text-4xl font-bold text-gray-800 mb-2">🔍 Quick Check</h2>
-        <p className="text-gray-600">Scan or search any asset to view details and owner information</p>
+      <div className="mb-6 sm:mb-8">
+        <h2 className="text-2xl sm:text-4xl font-bold text-gray-800 mb-2">🔍 Quick Check</h2>
+        <p className="text-sm sm:text-base text-gray-600">Scan or search any asset to view details and owner information</p>
       </div>
 
       <div className="max-w-6xl mx-auto">
         {/* Search Section */}
-        <Card className="mb-8">
-          <h3 className="text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
+        <Card className="mb-6 sm:mb-8">
+          <h3 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-4 sm:mb-6 flex items-center gap-2">
             <span>🔎</span> Search Asset
           </h3>
 
-          <div className="flex gap-3 mb-6">
+          <div className="flex flex-col sm:flex-row gap-3 mb-6">
             <div className="relative flex-1">
               <input
                 type="text"
@@ -142,11 +154,11 @@ export default function QuickCheck() {
                   }
                 }}
                 onFocus={() => search && setShowList(true)}
-                className="input-base py-2 px-3 text-sm w-full"
+                className="input-base py-3 sm:py-2 px-4 sm:px-3 text-base sm:text-sm w-full"
                 autoFocus
               />
               <span
-                className="absolute right-4 top-3 cursor-pointer text-gray-400 text-xl"
+                className="absolute right-4 top-3 sm:top-2 cursor-pointer text-gray-400 text-xl"
                 onClick={() => setShowList(!showList)}
               >
                 ▼
@@ -156,7 +168,7 @@ export default function QuickCheck() {
               variant="primary"
               onClick={() => loadAssetDetails(search)}
               isLoading={isLoading}
-              className="bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-200 border-none px-5 py-2 text-base"
+              className="bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-200 border-none px-4 sm:px-5 py-3 sm:py-2 text-base sm:text-base w-full sm:w-auto"
               icon="🔍 "
             >
               Search
@@ -164,7 +176,7 @@ export default function QuickCheck() {
             <Button
               variant="primary"
               onClick={startBarcodeScanner}
-              className="bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-200 border-none px-5 py-2 text-base"
+              className="bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-200 border-none px-4 sm:px-5 py-3 sm:py-2 text-base sm:text-base w-full sm:w-auto"
               icon="📷 "
               title="Scan barcode"
             >
