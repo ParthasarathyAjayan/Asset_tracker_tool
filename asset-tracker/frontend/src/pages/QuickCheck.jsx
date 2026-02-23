@@ -255,7 +255,7 @@ export default function QuickCheck() {
             </Card>
 
             {/* Owner Card */}
-            <Card className={`bg-gradient-to-br ${owner ? "from-purple-50 to-pink-50" : "from-gray-50 to-gray-100"}`}>
+            <Card className={`bg-gradient-to-br ${owner ? "from-orange-50 to-red-50" : "from-gray-50 to-gray-100"}`}>
               <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
                 <span>{owner ? "👤" : "📭"}</span> {owner ? "Owner Information" : "No Assignment"}
               </h3>

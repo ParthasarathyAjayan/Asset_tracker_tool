@@ -340,7 +340,7 @@ export default function Add() {
             </ul>
           </Card>
 
-          <Card className="bg-gradient-to-br from-purple-50 to-pink-50">
+          <Card className="bg-gradient-to-br from-orange-50 to-red-50">
             <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
               <span>📊</span> Asset Statistics
             </h3>

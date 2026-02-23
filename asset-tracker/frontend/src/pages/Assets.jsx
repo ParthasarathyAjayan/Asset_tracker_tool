@@ -104,7 +104,7 @@ export default function Assets() {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-gray-600 text-sm">Available</p>
-              <p className="text-3xl font-bold text-purple-600">
+              <p className="text-3xl font-bold text-orange-600">
                 {assets.filter(a => a.status === "instock").length}
               </p>
             </div>

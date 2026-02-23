@@ -15,101 +15,156 @@ function Menu() {
   const navigate = useNavigate();
 
   const menuItems = [
-    { label: "Quick Check", path: "/quick-check", icon: "🔍", desc: "Fast asset lookup", color: "bg-gradient-to-br from-amber-600 to-orange-700" },
-    { label: "Add Asset", path: "/add", icon: "➕", desc: "Register new asset", color: "bg-gradient-to-br from-orange-600 to-red-700" },
-    { label: "Assign Asset", path: "/assign", icon: "👤", desc: "Assign to employee", color: "bg-gradient-to-br from-amber-700 to-orange-800" },
-    { label: "Manage Asset", path: "/out", icon: "📤", desc: "Return/Repair/Retire", color: "bg-gradient-to-br from-orange-700 to-red-800" },
-    { label: "Employees", path: "/employees", icon: "👥", desc: "Employee management", color: "bg-gradient-to-br from-amber-600 to-orange-700" },
-    { label: "Assets", path: "/assets", icon: "📦", desc: "View all assets", color: "bg-gradient-to-br from-orange-600 to-red-700" },
-    { label: "Repair List", path: "/repair", icon: "🔧", desc: "Track repairs", color: "bg-gradient-to-br from-amber-700 to-orange-800" },
-    { label: "Exit Clearance", path: "/clearance", icon: "🔐", desc: "Employee exit", color: "bg-gradient-to-br from-orange-700 to-red-800" },
+    { label: "Quick Check", path: "/quick-check", icon: "🔍", desc: "Fast asset lookup", size: "lg", color: "bg-gradient-to-br from-orange-600 to-red-600" },
+    { label: "Add Asset", path: "/add", icon: "➕", desc: "Register new asset", size: "sm", color: "bg-gradient-to-br from-orange-500 to-amber-600" },
+    { label: "Assets", path: "/assets", icon: "📦", desc: "View all assets", size: "sm", color: "bg-gradient-to-br from-red-500 to-orange-600" },
+    { label: "Assign Asset", path: "/assign", icon: "👤", desc: "Assign to employee", size: "sm", color: "bg-gradient-to-br from-amber-600 to-yellow-700" },
+    { label: "Manage Asset", path: "/out", icon: "📤", desc: "Return/Repair/Retire", size: "sm", color: "bg-gradient-to-br from-orange-600 to-red-700" },
+    { label: "Employees", path: "/employees", icon: "👥", desc: "Employee management", size: "sm", color: "bg-gradient-to-br from-amber-600 to-orange-700" },
+    { label: "Repair List", path: "/repair", icon: "🔧", desc: "Track repairs", size: "lg", color: "bg-gradient-to-br from-red-600 to-orange-600" },
+    { label: "Exit Clearance", path: "/clearance", icon: "🔐", desc: "Employee exit", size: "sm", color: "bg-gradient-to-br from-amber-700 to-yellow-800" },
   ];
 
   return (
-    <div className="min-h-screen bg-white relative">
-      {/* Subtle background pattern */}
-      <div className="fixed inset-0 pointer-events-none" style={{
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Frosted Glass White Background */}
+      <div className="fixed inset-0 -z-20" style={{
+        background: `linear-gradient(135deg, #ffffff 0%, #f5f5f5 50%, #ebebeb 100%)`,
+        backgroundSize: '100% 100%'
+      }}></div>
+
+      {/* Subtle white glass overlay with frosted effect */}
+      <div className="fixed inset-0 pointer-events-none -z-10" style={{
         backgroundImage: `
-          radial-gradient(circle at 20% 50%, rgba(249, 115, 22, 0.05) 0%, transparent 50%),
-          radial-gradient(circle at 80% 80%, rgba(217, 119, 6, 0.05) 0%, transparent 50%),
-          linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(249, 115, 22, 0.02) 100%)
+          radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.8) 0%, transparent 50%),
+          radial-gradient(circle at 80% 80%, rgba(200, 200, 200, 0.1) 0%, transparent 50%),
+          linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.3) 100%)
         `,
+        backdropFilter: 'blur(10px)',
         zIndex: 0
       }}></div>
-      
-      {/* Dot pattern */}
-      <div className="fixed inset-0 pointer-events-none" style={{
-        backgroundImage: `radial-gradient(circle, rgba(249, 115, 22, 0.08) 1px, transparent 1px)`,
-        backgroundSize: '50px 50px',
-        zIndex: 0
-      }}></div>
-      {/* Header */}
-      <header className="bg-gradient-to-r from-slate-900 via-red-900 to-amber-900 text-white shadow-2xl relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: `linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%, transparent)`,
+
+      {/* Header - Frosted Glass White */}
+      <header className="backdrop-blur-2xl bg-white/40 shadow-lg relative overflow-hidden border border-white/60" style={{
+        boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 10px 30px rgba(0, 0, 0, 0.08)'
+      }}>
+        <div className="absolute inset-0 opacity-5" style={{
+          backgroundImage: `linear-gradient(45deg, rgba(0,0,0,0.03) 25%, transparent 25%, transparent 50%, rgba(0,0,0,0.03) 50%, rgba(0,0,0,0.03) 75%, transparent 75%, transparent)`,
           backgroundSize: '20px 20px'
         }}></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-12 relative z-10">
           <div className="flex items-center justify-between mb-6 sm:mb-8">
             <div className="flex-1">
               <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
-                <div className="h-1 w-8 sm:w-12 bg-gradient-to-r from-orange-400 to-yellow-400 rounded-full"></div>
-                <h1 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">JobWorld</h1>
+                <div className="h-1 w-8 sm:w-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full"></div>
+                <h1 className="text-2xl sm:text-4xl font-bold text-gray-800 tracking-tight">JobWorld</h1>
               </div>
-              <h2 className="text-xl sm:text-3xl font-black text-orange-300" style={{
+              <h2 className="text-xl sm:text-3xl font-black text-orange-600" style={{
                 fontFamily: '"Arial Black", sans-serif',
                 letterSpacing: '0.08em'
               }}>
                 INVENTORY PRO
               </h2>
-              <p className="text-orange-100 text-xs mt-2 sm:mt-3 font-semibold uppercase tracking-widest hidden sm:block">Premium Asset & Inventory Management Platform</p>
+              <p className="text-gray-600 text-xs mt-2 sm:mt-3 font-semibold uppercase tracking-widest hidden sm:block">Premium Asset & Inventory Management Platform</p>
             </div>
           </div>
-          <div className="h-1 w-24 sm:w-32 bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-400 rounded-full shadow-lg"></div>
+          <div className="h-1 w-24 sm:w-32 bg-gradient-to-r from-orange-500 via-red-500 to-orange-500 rounded-full" style={{
+            boxShadow: '0 2px 8px rgba(255, 107, 53, 0.3)'
+          }}></div>
         </div>
         <JobWorld3DLogo />
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-12 relative z-10 flex flex-col">
-        {/* Menu Grid */}
-        <div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
-            {menuItems.map((item) => (
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-12 relative z-10 flex flex-col">
+        {/* Bento Grid - 3D Effect */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 auto-rows-max" style={{
+          perspective: '1200px'
+        }}>
+          {menuItems.map((item) => {
+            const sizeClass = item.size === 'lg' 
+              ? 'col-span-2 sm:col-span-2 lg:col-span-2 row-span-2' 
+              : 'col-span-1 row-span-1';
+            
+            return (
               <button
                 key={item.path}
                 onClick={() => navigate(item.path)}
-                className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 active:translate-y-0"
+                className={`${sizeClass} group relative overflow-visible transition-all duration-500`}
+                style={{
+                  transformStyle: 'preserve-3d',
+                  transform: 'translateZ(0)'
+                }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = (e.clientX - rect.left) / rect.width - 0.5;
+                  const y = (e.clientY - rect.top) / rect.height - 0.5;
+                  e.currentTarget.style.transform = `rotateX(${y * 20}deg) rotateY(${x * 20}deg) translateZ(20px)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'rotateX(0) rotateY(0) translateZ(0)';
+                }}
               >
-                {/* Card Background */}
-                <div className={`${item.color} h-full p-6 sm:p-12 text-white relative overflow-hidden`}>
-                  {/* Shine effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -translate-x-full group-hover:translate-x-full" style={{animation: 'shimmer 0.6s ease-in-out'}}></div>
+                {/* Card Container with 3D depth */}
+                <div className="h-full relative" style={{
+                  transformStyle: 'preserve-3d',
+                }}
+                >
+                  {/* Back shadow layer */}
+                  <div className="absolute inset-0 rounded-3xl bg-black/40 blur-xl" style={{
+                    transform: 'translateZ(-30px)',
+                    zIndex: -1
+                  }}></div>
                   
-                  {/* Content */}
-                  <div className="relative z-10 text-center h-full flex flex-col items-center justify-center">
-                    <div className="text-4xl sm:text-6xl mb-2 sm:mb-4 transform group-hover:scale-125 group-hover:rotate-6 transition-transform duration-300">
-                      {item.icon}
+                  {/* Main card */}
+                  <div className={`${item.color} h-full p-4 sm:p-6 lg:p-8 text-white relative overflow-hidden flex flex-col justify-between min-h-[120px] sm:min-h-[140px] rounded-3xl shadow-2xl hover:shadow-2xl transition-all duration-300`}
+                    style={{
+                      transformStyle: 'preserve-3d',
+                      transform: 'translateZ(0px)',
+                    }}
+                  >
+                    {/* Shine effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -translate-x-full group-hover:translate-x-full" style={{
+                      animation: 'shimmer 0.6s ease-in-out',
+                      transformStyle: 'preserve-3d',
+                      transform: 'translateZ(10px)'
+                    }}></div>
+                    
+                    {/* Content */}
+                    <div className="relative z-10 flex flex-col h-full" style={{
+                      transformStyle: 'preserve-3d',
+                    }}>
+                      <div className={item.size === 'lg' ? 'text-5xl sm:text-7xl mb-4' : 'text-3xl sm:text-4xl mb-2'}>
+                        {item.icon}
+                      </div>
+                      <div className="flex-1 flex flex-col justify-end">
+                        <h3 className={item.size === 'lg' ? 'text-lg sm:text-2xl font-bold leading-tight' : 'text-base sm:text-lg font-bold leading-tight'}>
+                          {item.label}
+                        </h3>
+                        {item.size === 'lg' && (
+                          <p className="text-sm sm:text-base text-white/80 mt-2">{item.desc}</p>
+                        )}
+                      </div>
                     </div>
-                    <h3 className="text-base sm:text-lg font-bold mb-1 sm:mb-2 leading-tight">{item.label}</h3>
-                    <p className="text-xs sm:text-sm text-white/80 hidden sm:block">{item.desc}</p>
                   </div>
                 </div>
               </button>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </main>
 
-      {/* Footer - Option 2 */}
-      <footer className="bg-gradient-to-r from-slate-900 via-red-900 to-amber-900 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6 text-center border-t border-orange-700">
+      {/* Footer - Frosted Glass White */}
+      <footer className="backdrop-blur-2xl bg-white/40 border-t border-white/60" style={{
+        boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.6)'
+      }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6 text-center">
           <div className="flex items-center justify-center gap-2 mb-1 sm:mb-2">
-            <div className="h-0.5 w-6 sm:w-8 bg-gradient-to-r from-orange-400 to-transparent"></div>
-            <p className="text-orange-200 text-xs font-bold uppercase tracking-widest">JobWorld Inventory Pro</p>
-            <div className="h-0.5 w-6 sm:w-8 bg-gradient-to-l from-orange-400 to-transparent"></div>
+            <div className="h-0.5 w-6 sm:w-8 bg-gradient-to-r from-orange-500 to-transparent"></div>
+            <p className="text-gray-700 text-xs font-bold uppercase tracking-widest">JobWorld Inventory Pro</p>
+            <div className="h-0.5 w-6 sm:w-8 bg-gradient-to-l from-orange-500 to-transparent"></div>
           </div>
-          <p className="text-orange-100 text-xs">Premium Asset Management System • Version 1.0</p>
+          <p className="text-gray-600 text-xs">Premium Asset Management System • Version 1.0</p>
         </div>
       </footer>
     </div>

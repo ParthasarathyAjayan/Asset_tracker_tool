@@ -236,7 +236,7 @@ export default function Assign() {
         {asset && (
           <Card>
             <h3 className="text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
-              <span className="bg-purple-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">2</span>
+              <span className="bg-orange-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">2</span>
               Select Employee
             </h3>
 
@@ -271,9 +271,9 @@ export default function Assign() {
                       setEmployeeSearch(`${emp.employee_id} - ${emp.name}`);
                       setShowEmployeeList(false);
                     }}
-                    className="p-3 cursor-pointer hover:bg-purple-50 border-b border-gray-100 transition-colors"
+                    className="p-3 cursor-pointer hover:bg-orange-50 border-b border-gray-100 transition-colors"
                   >
-                    <div className="font-semibold text-purple-600">{emp.employee_id}</div>
+                    <div className="font-semibold text-orange-600">{emp.employee_id}</div>
                     <div className="text-sm text-gray-600">{emp.name}</div>
                     <div className="text-xs text-gray-500">{emp.location}</div>
                   </div>
@@ -283,7 +283,7 @@ export default function Assign() {
 
             {/* Selected Employee */}
             {employeeId && (
-              <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-4 mb-6 border-l-4 border-purple-600">
+              <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-4 mb-6 border-l-4 border-orange-600">
                 <h5 className="font-semibold text-gray-800 mb-2 flex items-center gap-2">
                   <span>✓</span> Employee Selected
                 </h5>

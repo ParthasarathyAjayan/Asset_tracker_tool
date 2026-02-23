@@ -134,7 +134,7 @@ export default function Employees() {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-gray-600 text-sm">Locations</p>
-              <p className="text-3xl font-bold text-purple-600">
+              <p className="text-3xl font-bold text-orange-600">
                 {new Set(employees.map(e => e.location)).size}
               </p>
             </div>
