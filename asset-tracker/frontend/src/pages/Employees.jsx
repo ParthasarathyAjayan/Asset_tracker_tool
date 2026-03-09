@@ -227,7 +227,7 @@ export default function Employees() {
           <p className="text-4xl mb-4">👤</p>
           <p className="text-white font-medium">No employees found. Add your first employee to get started!</p>
         </Card>
-      )}}
+      )}
 
       {/* Add Employee Modal */}
       <Modal 
