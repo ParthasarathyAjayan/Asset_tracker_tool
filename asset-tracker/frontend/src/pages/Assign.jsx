@@ -120,26 +120,32 @@ export default function Assign() {
       "In Repair": "text-orange-600",
       "Missing": "text-red-600",
     };
-    return colors[status] || "text-gray-600";
+    return colors[status] || "text-white";
   };
 
   return (
     <div className="page">
       {/* Header */}
       <div className="mb-8">
-        <h2 className="text-4xl font-bold text-gray-800 mb-2">Assign Asset</h2>
-        <p className="text-gray-600">Assign IT assets to employees</p>
+        <h2 className="text-4xl font-bold text-white mb-2">Assign Asset</h2>
+        <p className="text-white font-medium">Assign IT assets to employees</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Step 1: Select Asset */}
-        <Card className="lg:col-span-2">
-          <h3 className="text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
-            <span className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">1</span>
+        <Card className="lg:col-span-2 bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-orange-500" style={{
+          boxShadow: `
+            0 20px 40px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1),
+            inset 0 -2px 4px rgba(0, 0, 0, 0.3)
+          `
+        }}>
+          <h3 className="text-2xl font-semibold text-white mb-6 flex items-center gap-2">
+            <span className="bg-orange-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">1</span>
             Select Asset
           </h3>
 
-          <label className="form-label">📦 Scan / Type / Select Asset</label>
+          <label className="form-label text-white font-bold">📦 Scan / Type / Select Asset</label>
           <div className="flex gap-2 mb-4">
             <div className="relative flex-1">
               <input
@@ -149,11 +155,11 @@ export default function Assign() {
                   setSearch(e.target.value);
                   setShowList(true);
                 }}
-                className="input-base w-full"
+                className="input-base w-full bg-gray-900/50 border-2 border-orange-500 text-white placeholder-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-400"
                 onFocus={() => search && setShowList(true)}
               />
               <span
-                className="absolute right-4 top-3 cursor-pointer text-gray-400 text-xl"
+                className="absolute right-4 top-3 cursor-pointer text-orange-400 text-xl"
                 onClick={() => setShowList(!showList)}
               >
                 ▼
@@ -162,7 +168,7 @@ export default function Assign() {
             <Button
               variant="primary"
               onClick={startBarcodeScanner}
-              className="bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-200 border-none px-5 py-2 text-base"
+              className="bg-gradient-to-r from-orange-600 via-orange-500 to-red-600 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-200 border border-orange-400/50 px-5 py-2 text-base"
               icon="📷 "
               title="Scan barcode"
             >
@@ -172,15 +178,15 @@ export default function Assign() {
 
           {/* Asset dropdown */}
           {showList && filteredAssets.length > 0 && (
-            <div className="border border-gray-200 rounded-lg overflow-hidden mb-4 bg-white shadow-lg z-10">
+            <div className="border-2 border-orange-500 rounded-lg overflow-hidden mb-4 bg-gray-900/80 shadow-lg z-10">
               {filteredAssets.slice(0, 8).map(a => (
                 <div
                   key={a.asset_code}
                   onClick={() => loadAsset(a.asset_code)}
-                  className="p-3 cursor-pointer hover:bg-blue-50 border-b border-gray-100 transition-colors"
+                  className="p-3 cursor-pointer hover:bg-orange-500/10 border-b-2 border-orange-500 transition-colors"
                 >
-                  <div className="font-semibold text-blue-600">{a.asset_code}</div>
-                  <div className="text-sm text-gray-600">{a.brand} {a.model}</div>
+                  <div className="font-semibold text-orange-400">{a.asset_code}</div>
+                  <div className="text-sm text-white font-medium">{a.brand} {a.model}</div>
                   <Badge variant="info">{a.status}</Badge>
                 </div>
               ))}
@@ -190,7 +196,7 @@ export default function Assign() {
           <Button 
             variant="primary"
             onClick={() => loadAsset(search)}
-            className="mb-6 bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-200 border-none px-5 py-2 text-base"
+            className="mb-6 bg-gradient-to-r from-orange-600 via-orange-500 to-red-600 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-200 border border-orange-400/50 px-5 py-2 text-base"
             icon="🔍 "
             size="md"
           >
@@ -199,30 +205,36 @@ export default function Assign() {
 
           {/* Asset Details Card */}
           {asset && (
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border-l-4 border-blue-600">
-              <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+            <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-6 border-l-4 border-orange-500" style={{
+              boxShadow: `
+                0 20px 40px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.3)
+              `
+            }}>
+              <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                 <span>✓</span> Asset Selected
               </h4>
               
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Asset Code:</span>
-                  <span className="font-semibold text-blue-600">{asset.asset_code}</span>
+                  <span className="text-white font-bold">Asset Code:</span>
+                  <span className="font-semibold text-orange-400">{asset.asset_code}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Category:</span>
-                  <span className="font-semibold">{asset.category}</span>
+                  <span className="text-white font-bold">Category:</span>
+                  <span className="font-medium text-white">{asset.category}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Brand:</span>
-                  <span>{asset.brand}</span>
+                  <span className="text-white font-bold">Brand:</span>
+                  <span className="text-white font-medium">{asset.brand}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Model:</span>
-                  <span>{asset.model}</span>
+                  <span className="text-white font-bold">Model:</span>
+                  <span className="text-white font-medium">{asset.model}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Status:</span>
+                  <span className="text-white font-bold">Status:</span>
                   <Badge variant={asset.status === "Available" ? "success" : "warning"}>
                     {asset.status}
                   </Badge>
@@ -234,13 +246,19 @@ export default function Assign() {
 
         {/* Step 2: Select Employee */}
         {asset && (
-          <Card>
-            <h3 className="text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
+          <Card className="bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-orange-500" style={{
+            boxShadow: `
+              0 20px 40px rgba(0, 0, 0, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.3)
+            `
+          }}>
+            <h3 className="text-2xl font-semibold text-white mb-6 flex items-center gap-2">
               <span className="bg-orange-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">2</span>
               Select Employee
             </h3>
 
-            <label className="form-label">👤 Search Employee</label>
+            <label className="form-label text-white font-bold">👤 Search Employee</label>
             <div className="relative mb-4">
               <input
                 placeholder="ID or name..."
@@ -249,11 +267,11 @@ export default function Assign() {
                   setEmployeeSearch(e.target.value);
                   setShowEmployeeList(true);
                 }}
-                className="input-base"
+                className="input-base bg-gray-900/50 border-2 border-orange-500 text-white placeholder-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-400 w-full"
                 onFocus={() => employeeSearch && setShowEmployeeList(true)}
               />
               <span
-                className="absolute right-4 top-3 cursor-pointer text-gray-400 text-xl"
+                className="absolute right-4 top-3 cursor-pointer text-orange-400 text-xl"
                 onClick={() => setShowEmployeeList(!showEmployeeList)}
               >
                 ▼
@@ -262,7 +280,7 @@ export default function Assign() {
 
             {/* Employee dropdown */}
             {showEmployeeList && filteredEmployees.length > 0 && (
-              <div className="border border-gray-200 rounded-lg overflow-hidden mb-4 bg-white shadow-lg">
+              <div className="border-2 border-orange-500 rounded-lg overflow-hidden mb-4 bg-gray-900/80 shadow-lg">
                 {filteredEmployees.slice(0, 6).map(emp => (
                   <div
                     key={emp.employee_id}
@@ -271,11 +289,11 @@ export default function Assign() {
                       setEmployeeSearch(`${emp.employee_id} - ${emp.name}`);
                       setShowEmployeeList(false);
                     }}
-                    className="p-3 cursor-pointer hover:bg-orange-50 border-b border-gray-100 transition-colors"
+                    className="p-3 cursor-pointer hover:bg-orange-500/10 border-b-2 border-orange-500 transition-colors"
                   >
-                    <div className="font-semibold text-orange-600">{emp.employee_id}</div>
-                    <div className="text-sm text-gray-600">{emp.name}</div>
-                    <div className="text-xs text-gray-500">{emp.location}</div>
+                    <div className="font-semibold text-orange-400">{emp.employee_id}</div>
+                    <div className="text-sm text-white font-medium">{emp.name}</div>
+                    <div className="text-xs text-white font-medium">{emp.location}</div>
                   </div>
                 ))}
               </div>
@@ -283,11 +301,11 @@ export default function Assign() {
 
             {/* Selected Employee */}
             {employeeId && (
-              <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-4 mb-6 border-l-4 border-orange-600">
-                <h5 className="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+              <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-4 mb-6 border-l-4 border-orange-500">
+                <h5 className="font-semibold text-white mb-2 flex items-center gap-2">
                   <span>✓</span> Employee Selected
                 </h5>
-                <p className="text-sm text-gray-600">{employeeSearch}</p>
+                <p className="text-sm text-white font-medium">{employeeSearch}</p>
               </div>
             )}
 
@@ -296,7 +314,7 @@ export default function Assign() {
               variant="primary"
               onClick={assign}
               isLoading={isLoading}
-              className="w-full bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-200 border-none px-5 py-2 text-base"
+              className="w-full bg-gradient-to-r from-orange-600 via-orange-500 to-red-600 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-200 border border-orange-400/50 px-5 py-2 text-base"
               icon="💼"
               size="md"
             >
@@ -353,7 +371,7 @@ export default function Assign() {
                 />
               </div>
 
-              <p className="text-sm text-gray-600 text-center mb-4">
+              <p className="text-sm text-white font-medium text-center mb-4">
                 Point camera at barcode or type manually below
               </p>
 

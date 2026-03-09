@@ -65,33 +65,33 @@ export default function Clearance() {
     <div className="page">
       {/* Header */}
       <div className="mb-8">
-        <h2 className="text-4xl font-bold text-gray-800 mb-2">Employee Exit Clearance</h2>
-        <p className="text-gray-600">Manage employee exit clearance and asset returns</p>
+        <h2 className="text-4xl font-bold text-white mb-2">Employee Exit Clearance</h2>
+        <p className="text-white font-medium">Manage employee exit clearance and asset returns</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Check Clearance */}
-        <Card className="lg:col-span-2">
-          <h3 className="text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
-            <span className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">1</span>
+        <Card className="lg:col-span-2 bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-orange-500">
+          <h3 className="text-2xl font-semibold text-white mb-6 flex items-center gap-2">
+            <span className="bg-orange-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">1</span>
             Check Clearance
           </h3>
 
           <div className="mb-6 space-y-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">👤 Employee ID</label>
+              <label className="block text-sm font-bold text-white mb-2">👤 Employee ID</label>
               <input
                 type="text"
                 placeholder="Type or select employee ID..."
                 value={emp}
                 onChange={e => setEmp(e.target.value)}
                 onKeyPress={(e) => e.key === "Enter" && check()}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+                className="w-full px-4 py-2 border-2 border-orange-500 rounded-lg bg-gray-900/50 text-white placeholder-gray-400 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-400 transition-all"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Or select from list</label>
+              <label className="block text-sm font-bold text-white mb-2">Or select from list</label>
               <select
                 onChange={e => {
                   if (e.target.value) {
@@ -99,9 +99,9 @@ export default function Clearance() {
                   }
                 }}
                 value=""
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+                className="w-full px-4 py-2 border-2 border-orange-500 rounded-lg bg-gray-900/50 text-white focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-400 transition-all"
               >
-                <option value="">-- Select an employee --</option>
+                <option value="" className="bg-gray-900 text-white">-- Select an employee --</option>
                 {employees.map(employee => (
                   <option key={employee.employee_id} value={employee.employee_id}>
                     {employee.employee_id} - {employee.name}
@@ -115,7 +115,7 @@ export default function Clearance() {
             variant="primary"
             onClick={check}
             isLoading={isLoading}
-            className="w-full mt-6 bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-200 border-none px-5 py-2 text-base"
+            className="w-full mt-6 bg-gradient-to-r from-orange-600 via-orange-500 to-red-600 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-200 border border-orange-400/50 px-5 py-2 text-base"
             icon="🔍"
             size="md"
           >
@@ -132,7 +132,7 @@ export default function Clearance() {
                   : "bg-red-50 border-red-600"
               }`}>
                 <div className="flex items-center justify-between mb-4">
-                  <h4 className="text-xl font-semibold text-gray-800">Clearance Status</h4>
+                  <h4 className="text-xl font-bold text-white">Clearance Status</h4>
                   <Badge variant={result.clearance ? "success" : "danger"}>
                     {result.clearance ? "✅ Approved" : "❌ Blocked"}
                   </Badge>
@@ -141,7 +141,7 @@ export default function Clearance() {
               {/* Pending Assets */}
               {result.assets && result.assets.length > 0 && (
                 <div className="bg-yellow-50 rounded-xl p-6 border-l-4 border-yellow-600">
-                  <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                  <h4 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
                     <span>⚠️</span> Pending Assets ({result.assets.length})
                   </h4>
                   <div className="space-y-2">
@@ -151,7 +151,7 @@ export default function Clearance() {
                         className="flex items-center gap-3 p-3 bg-white rounded-lg border border-yellow-200"
                       >
                         <span className="text-yellow-600 text-lg">📦</span>
-                        <span className="font-semibold text-gray-800">{assetCode}</span>
+                        <span className="font-bold text-orange-400">{assetCode}</span>
                         <Badge variant="warning">To Return</Badge>
                       </div>
                     ))}
@@ -162,7 +162,7 @@ export default function Clearance() {
               {/* Approval Section */}
               {result.clearance && (
                 <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 border-l-4 border-green-600">
-                  <h4 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                  <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                     <span className="bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">2</span>
                     Final Approval
                   </h4>
@@ -195,21 +195,21 @@ export default function Clearance() {
 
         {/* Info Panel */}
         <Card className="bg-gradient-to-br from-blue-50 to-indigo-50">
-          <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+          <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
             <span>ℹ️</span> About Exit Clearance
           </h3>
 
           <div className="space-y-4">
             <div className="bg-white rounded-lg p-3">
-              <p className="font-semibold text-gray-800 text-sm">What is this?</p>
-              <p className="text-sm text-gray-600 mt-2">
+              <p className="font-bold text-gray-900 text-sm">What is this?</p>
+              <p className="text-sm text-gray-900 font-medium mt-2">
                 Exit clearance ensures employees have returned or accounted for all assigned assets before leaving the company.
               </p>
             </div>
 
             <div className="bg-white rounded-lg p-3">
-              <p className="font-semibold text-gray-800 text-sm">Process</p>
-              <ul className="text-sm text-gray-600 mt-2 space-y-1">
+              <p className="font-bold text-gray-900 text-sm">Process</p>
+              <ul className="text-sm text-gray-900 font-medium mt-2 space-y-1">
                 <li>✓ Employee returns all assets</li>
                 <li>✓ System confirms all items accounted for</li>
                 <li>✓ Admin approves clearance</li>
@@ -218,8 +218,8 @@ export default function Clearance() {
             </div>
 
             <div className="bg-white rounded-lg p-3">
-              <p className="font-semibold text-gray-800 text-sm">Status Meanings</p>
-              <div className="text-sm text-gray-600 mt-2 space-y-1">
+              <p className="font-bold text-gray-900 text-sm">Status Meanings</p>
+              <div className="text-sm text-gray-900 font-medium mt-2 space-y-1">
                 <div className="flex items-center gap-2">
                   <Badge variant="success">Approved</Badge>
                   <span>All clear to proceed</span>

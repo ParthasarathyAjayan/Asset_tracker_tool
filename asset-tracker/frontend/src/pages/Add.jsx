@@ -148,26 +148,32 @@ export default function Add() {
   return (
     <div className="page">
       <div className="mb-8">
-        <h2 className="text-4xl font-bold text-gray-800 mb-2">Add New Asset</h2>
-        <p className="text-gray-600">Register a new IT asset in the system</p>
+        <h2 className="text-4xl font-bold text-white mb-2">Add New Asset</h2>
+        <p className="text-white font-medium">Register a new IT asset in the system</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Form Section */}
-        <Card className="form-section">
-          <h3 className="text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-2">
+        <Card className="form-section bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-orange-500" style={{
+          boxShadow: `
+            0 20px 40px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1),
+            inset 0 -2px 4px rgba(0, 0, 0, 0.3)
+          `
+        }}>
+          <h3 className="text-2xl font-semibold text-white mb-6 flex items-center gap-2">
             <span>📝</span> Asset Details
           </h3>
 
           {/* Barcode is generated after submission */}
           {generatedBarcode && (
-            <div className="mb-4 p-4 bg-green-50 border-l-4 border-green-500 rounded">
-              <div className="text-lg font-semibold text-green-700 mb-3 flex items-center gap-2">
+            <div className="mb-4 p-4 bg-green-900/30 border-l-4 border-green-500 rounded">
+              <div className="text-lg font-semibold text-green-100 mb-3 flex items-center gap-2">
                 <span>✅</span> Barcode Generated Successfully
               </div>
-              <div className="flex flex-col items-center justify-center bg-white p-4 rounded border-2 border-green-200 barcode-print-section">
+              <div className="flex flex-col items-center justify-center bg-gray-900/50 p-4 rounded border-2 border-green-500/50 barcode-print-section">
                 <div ref={barcodeRef}></div>
-                <div className="mt-3 text-center text-sm font-mono font-bold">{generatedBarcode}</div>
+                <div className="mt-3 text-center text-sm font-mono font-bold text-white">{generatedBarcode}</div>
               </div>
               <Button className="w-full" onClick={() => {
                 setTimeout(() => window.print(), 100);
@@ -221,16 +227,16 @@ export default function Add() {
 
           <div className="flex gap-3 mb-6">
             <div className="flex-1">
-              <label className="form-label">Category *</label>
+              <label className="form-label text-white font-bold">Category *</label>
               <select
                 name="category_id"
                 value={form.category_id || ""}
                 onChange={update}
-                className="input-base w-full"
+                className="input-base w-full bg-gray-900/50 border-2 border-orange-500 text-white placeholder-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-400"
               >
-                <option value="">Select Category</option>
+                <option value="" className="bg-gray-900 text-white">Select Category</option>
                 {categories.map(c => (
-                  <option key={c.id} value={c.id}>{c.name}</option>
+                  <option key={c.id} value={c.id} className="bg-gray-900 text-white">{c.name}</option>
                 ))}
               </select>
             </div>
@@ -238,7 +244,7 @@ export default function Add() {
               <Button 
                 variant="secondary"
                 onClick={() => setShowAddCategory(true)}
-                className="px-4 py-3 text-blue-600 border-blue-300 hover:bg-blue-50 whitespace-nowrap"
+                className="px-4 py-3 text-orange-400 border-b-2 border-orange-500 hover:bg-orange-500/10 whitespace-nowrap"
                 title="Add a new category"
               >
                 ➕ New
@@ -316,32 +322,44 @@ export default function Add() {
 
         {/* Info Section */}
         <div>
-          <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 mb-6">
-            <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+          <Card className="bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-orange-500 mb-6" style={{
+            boxShadow: `
+              0 20px 40px rgba(0, 0, 0, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.3)
+            `
+          }}>
+            <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
               <span>ℹ️</span> Quick Tips
             </h3>
-            <ul className="space-y-3 text-gray-700">
+            <ul className="space-y-3 text-white font-medium">
               <li className="flex gap-3">
-                <span className="text-blue-600 font-bold">•</span>
-                <span><strong>Barcode:</strong> Use the asset barcode or a unique identifier</span>
+                <span className="text-orange-400 font-bold">•</span>
+                <span><strong className="text-white">Barcode:</strong> Use the asset barcode or a unique identifier</span>
               </li>
               <li className="flex gap-3">
-                <span className="text-blue-600 font-bold">•</span>
-                <span><strong>Category:</strong> Choose the appropriate category for classification</span>
+                <span className="text-orange-400 font-bold">•</span>
+                <span><strong className="text-white">Category:</strong> Choose the appropriate category for classification</span>
               </li>
               <li className="flex gap-3">
-                <span className="text-blue-600 font-bold">•</span>
-                <span><strong>Type:</strong> Indicate if the asset is new or has been repaired</span>
+                <span className="text-orange-400 font-bold">•</span>
+                <span><strong className="text-white">Type:</strong> Indicate if the asset is new or has been repaired</span>
               </li>
               <li className="flex gap-3">
-                <span className="text-blue-600 font-bold">•</span>
-                <span><strong>Serial Number:</strong> Enter the manufacturer's serial number if available</span>
+                <span className="text-orange-400 font-bold">•</span>
+                <span><strong className="text-white">Serial Number:</strong> Enter the manufacturer's serial number if available</span>
               </li>
             </ul>
           </Card>
 
-          <Card className="bg-gradient-to-br from-orange-50 to-red-50">
-            <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+          <Card className="bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-orange-500" style={{
+            boxShadow: `
+              0 20px 40px rgba(0, 0, 0, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.3)
+            `
+          }}>
+            <h3 className="text-xl font-bold text-orange-400 mb-6 flex items-center gap-2">
               <span>📊</span> Asset Statistics
             </h3>
             <div className="grid grid-cols-2 gap-4">
@@ -352,12 +370,12 @@ export default function Add() {
                 onClick={() => navigate("/assets")}
               >
                 <span className="text-3xl font-bold text-blue-600">📦</span>
-                <span className="text-sm text-gray-600 mt-2">Total Assets</span>
+                <span className="text-sm text-gray-900 font-medium mt-2">Total Assets</span>
                 <span className="text-2xl font-bold text-blue-700 mt-1">{assetCount}</span>
               </Button>
               <div className="bg-white rounded-lg p-4 text-center">
                 <p className="text-3xl font-bold text-green-600">✓</p>
-                <p className="text-sm text-gray-600 mt-2">Registered</p>
+                <p className="text-sm text-gray-900 font-medium mt-2">Registered</p>
               </div>
             </div>
           </Card>
@@ -379,28 +397,28 @@ export default function Add() {
       {/* Custom Confirmation Modal */}
       {showConfirm && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-2xl max-w-md w-full mx-4 overflow-hidden">
-            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 text-white">
+          <div className="bg-gray-900 rounded-lg shadow-2xl max-w-md w-full mx-4 overflow-hidden border-2 border-orange-500">
+            <div className="bg-gradient-to-r from-orange-600 via-orange-500 to-red-600 p-6 text-white">
               <h3 className="text-xl font-bold flex items-center gap-2">
                 <span>⚠️</span> Confirm Action
               </h3>
             </div>
             <div className="p-6">
-              <p className="text-gray-700 text-lg mb-6">
+              <p className="text-white text-lg mb-6">
                 Save the asset details and generate a new barcode?
               </p>
               <div className="flex gap-3">
                 <button
                   onClick={confirmSave}
                   disabled={isLoading}
-                  className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition disabled:opacity-50"
+                  className="flex-1 bg-gradient-to-r from-orange-600 via-orange-500 to-red-600 hover:scale-105 text-white font-semibold py-3 rounded-full transition disabled:opacity-50 border border-orange-400/50"
                 >
                   {isLoading ? "Processing..." : "✅ Confirm"}
                 </button>
                 <button
                   onClick={cancelSave}
                   disabled={isLoading}
-                  className="flex-1 bg-gray-400 hover:bg-gray-500 text-white font-semibold py-3 rounded-lg transition disabled:opacity-50"
+                  className="flex-1 bg-gray-700/80 hover:bg-gray-600 text-white font-semibold py-3 rounded-full transition disabled:opacity-50 border border-gray-600/50"
                 >
                   ❌ Cancel
                 </button>
@@ -413,27 +431,27 @@ export default function Add() {
       {/* Add Category Modal */}
       {showAddCategory && !showSimilarWarning && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-2xl max-w-md w-full mx-4 overflow-hidden">
-            <div className="bg-gradient-to-r from-green-600 to-teal-600 p-6 text-white">
+          <div className="bg-gray-900 rounded-lg shadow-2xl max-w-md w-full mx-4 overflow-hidden border-2 border-orange-500">
+            <div className="bg-gradient-to-r from-orange-600 via-orange-500 to-red-600 p-6 text-white">
               <h3 className="text-xl font-bold flex items-center gap-2">
                 <span>➕</span> Add New Category
               </h3>
             </div>
             <div className="p-6">
-              <p className="text-gray-700 mb-4">Enter the name of the new category:</p>
+              <p className="text-white mb-4">Enter the name of the new category:</p>
               <input
                 type="text"
                 placeholder="e.g., Laptop, Monitor, Printer"
                 value={newCategoryName}
                 onChange={e => setNewCategoryName(e.target.value)}
-                className="input-base w-full mb-4"
+                className="input-base w-full mb-4 bg-gray-900/50 border-2 border-orange-500 text-white placeholder-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-400"
                 autoFocus
               />
               <div className="flex gap-3">
                 <button
                   onClick={handleCheckCategory}
                   disabled={categoryLoading}
-                  className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition disabled:opacity-50"
+                  className="flex-1 bg-gradient-to-r from-orange-600 via-orange-500 to-red-600 hover:scale-105 text-white font-semibold py-3 rounded-full transition disabled:opacity-50 border border-orange-400/50"
                 >
                   {categoryLoading ? "Checking..." : "✅ Check & Add"}
                 </button>
@@ -443,7 +461,7 @@ export default function Add() {
                     setNewCategoryName("");
                   }}
                   disabled={categoryLoading}
-                  className="flex-1 bg-gray-400 hover:bg-gray-500 text-white font-semibold py-3 rounded-lg transition disabled:opacity-50"
+                  className="flex-1 bg-gray-700/80 hover:bg-gray-600 text-white font-semibold py-3 rounded-full transition disabled:opacity-50 border border-gray-600/50"
                 >
                   ❌ Cancel
                 </button>
@@ -456,39 +474,39 @@ export default function Add() {
       {/* Similar Category Warning Modal */}
       {showSimilarWarning && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-2xl max-w-md w-full mx-4 overflow-hidden">
+          <div className="bg-gray-900 rounded-lg shadow-2xl max-w-md w-full mx-4 overflow-hidden border-2 border-orange-500">
             <div className="bg-gradient-to-r from-yellow-600 to-orange-600 p-6 text-white">
               <h3 className="text-xl font-bold flex items-center gap-2">
                 <span>⚠️</span> Similar Category Found
               </h3>
             </div>
             <div className="p-6">
-              <p className="text-gray-700 mb-4">
+              <p className="text-white mb-4">
                 The following similar categories already exist:
               </p>
-              <div className="mb-6 bg-yellow-50 p-4 rounded border-l-4 border-yellow-400 max-h-40 overflow-y-auto">
+              <div className="mb-6 bg-yellow-900/30 p-4 rounded border-l-4 border-yellow-500 max-h-40 overflow-y-auto">
                 {similarCategories.map((cat, idx) => (
                   <div key={idx} className="mb-2 text-sm">
-                    <span className="font-semibold text-gray-800">{cat.name}</span>
+                    <span className="font-semibold text-yellow-100">{cat.name}</span>
                     {cat.type === "exact" && (
-                      <span className="ml-2 text-red-600 text-xs">(Exact match)</span>
+                      <span className="ml-2 text-red-400 text-xs">(Exact match)</span>
                     )}
                     {cat.type === "similar" && (
-                      <span className="ml-2 text-yellow-600 text-xs">
+                      <span className="ml-2 text-yellow-400 text-xs">
                         ({Math.round(cat.similarity * 100)}% similar)
                       </span>
                     )}
                   </div>
                 ))}
               </div>
-              <p className="text-gray-600 text-sm mb-4">
-                Are you sure you want to add "<strong>{newCategoryName}</strong>" as a new category?
+              <p className="text-white text-sm font-medium mb-4">
+                Are you sure you want to add "<strong className="text-white">{newCategoryName}</strong>" as a new category?
               </p>
               <div className="flex gap-3">
                 <button
                   onClick={proceedAddCategory}
                   disabled={categoryLoading}
-                  className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition disabled:opacity-50"
+                  className="flex-1 bg-gradient-to-r from-orange-600 via-orange-500 to-red-600 hover:scale-105 text-white font-semibold py-3 rounded-full transition disabled:opacity-50 border border-orange-400/50"
                 >
                   {categoryLoading ? "Adding..." : "✅ Yes, Add Anyway"}
                 </button>
@@ -498,7 +516,7 @@ export default function Add() {
                     setShowAddCategory(true);
                   }}
                   disabled={categoryLoading}
-                  className="flex-1 bg-gray-400 hover:bg-gray-500 text-white font-semibold py-3 rounded-lg transition disabled:opacity-50"
+                  className="flex-1 bg-gray-700/80 hover:bg-gray-600 text-white font-semibold py-3 rounded-full transition disabled:opacity-50 border border-gray-600/50"
                 >
                   ❌ Cancel
                 </button>

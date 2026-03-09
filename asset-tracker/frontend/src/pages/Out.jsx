@@ -142,14 +142,14 @@ export default function Out() {
     <div className="page">
       {/* Header */}
       <div className="mb-8">
-        <h2 className="text-4xl font-bold text-gray-800 mb-2">Manage Asset Status</h2>
-        <p className="text-gray-600">Manage asset status: return, repair, missing, or retire</p>
+        <h2 className="text-4xl font-bold text-white mb-2">Manage Asset Status</h2>
+        <p className="text-white font-medium">Manage asset status: return, repair, missing, or retire</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Action Selector */}
-        <Card className="lg:col-span-2">
-          <h3 className="text-2xl font-semibold text-gray-800 mb-6">Select Action</h3>
+        <Card className="lg:col-span-2 bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-orange-500">
+          <h3 className="text-2xl font-semibold text-white mb-6">Select Action</h3>
 
           <div className="grid grid-cols-2 gap-4 mb-8">
             {Object.entries(actionConfig).map(([key, config]) => (
@@ -158,36 +158,37 @@ export default function Out() {
                 onClick={() => setAction(key)}
                 className={`p-4 rounded-lg border-2 transition-all ${
                   action === key
-                    ? `border-blue-500 bg-blue-50`
-                    : `border-gray-200 hover:border-gray-300`
+                    ? `border-orange-500 bg-orange-500/10`
+                    : `border-2 border-orange-500 hover:border-orange-500`
                 }`}
               >
                 <div className="text-3xl mb-2">{config.icon}</div>
-                <div className="text-sm font-semibold text-gray-800">{config.label}</div>
-                <div className="text-xs text-gray-600 mt-1">{config.description}</div>
+                <div className="text-sm font-bold text-white">{config.label}</div>
+                <div className="text-xs text-gray-300 mt-1">{config.description}</div>
               </button>
             ))}
           </div>
 
           {/* Barcode Input with Scan Button */}
           <div className="mb-6">
-            <label className="block text-sm font-semibold text-gray-700 mb-2">📦 Asset Barcode</label>
-            <div className="flex gap-3">
+            <label className="block text-sm font-bold text-white mb-2">📦 Asset Barcode</label>
+            <div className="flex gap-2 sm:gap-3">
               <input
                 type="text"
                 placeholder="Scan or enter barcode"
                 value={barcode}
                 onChange={e => setBarcode(e.target.value)}
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+                className="flex-1 px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all text-sm sm:text-base"
               />
               <Button
                 variant="primary"
                 onClick={startBarcodeScanner}
-                className="bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-200 border-none px-5 py-2"
+                className="flex-shrink-0 bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-200 border-none px-3 sm:px-5 py-2 text-sm sm:text-base"
                 icon="📷"
                 title="Scan barcode"
               >
-                Scan
+                <span className="hidden sm:inline">Scan</span>
+                <span className="sm:hidden">📷</span>
               </Button>
             </div>
           </div>
@@ -196,7 +197,7 @@ export default function Out() {
           {showBarcodeScanner && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
               <Card className="w-full max-w-md">
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">📷 Scan Barcode</h3>
+                <h3 className="text-2xl font-bold text-white mb-4">📷 Scan Barcode</h3>
                 <video
                   ref={videoRef}
                   autoPlay
@@ -205,7 +206,7 @@ export default function Out() {
                   style={{ maxHeight: '400px' }}
                 />
                 <div className="mb-4">
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Or enter manually:</label>
+                  <label className="block text-sm font-bold text-white mb-2">Or enter manually:</label>
                   <input
                     type="text"
                     placeholder="Type barcode..."
@@ -255,7 +256,7 @@ export default function Out() {
 
           {/* Comments Section */}
           <div className="mb-6">
-            <label className="block text-sm font-semibold text-gray-700 mb-2">💬 Comments (Optional)</label>
+            <label className="block text-sm font-bold text-white mb-2">💬 Comments (Optional)</label>
             <textarea
               placeholder="Add any notes or comments for audit trail..."
               value={comments}
@@ -263,7 +264,7 @@ export default function Out() {
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all resize-none"
               rows="4"
             />
-            <p className="text-xs text-gray-500 mt-1">Comments will be saved in the audit history</p>
+            <p className="text-xs text-white font-medium mt-1">Comments will be saved in the audit history</p>
           </div>
 
           {/* Action Button */}

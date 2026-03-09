@@ -48,7 +48,7 @@ export default function Assets() {
     { 
       key: "asset_code", 
       label: "Asset Code",
-      render: (value) => <span className="font-semibold text-blue-600">{value}</span>
+      render: (value) => <span className="font-semibold text-orange-400">{value}</span>
     },
     { key: "category", label: "Category" },
     { 
@@ -72,27 +72,27 @@ export default function Assets() {
     <div className="page">
       {/* Header */}
       <div className="mb-8">
-        <h2 className="text-4xl font-bold text-gray-800 mb-2">All Assets</h2>
-        <p className="text-gray-600">View and manage all IT assets in the system</p>
+        <h2 className="text-4xl font-bold text-white mb-2">All Assets</h2>
+        <p className="text-white font-medium">View and manage all IT assets in the system</p>
       </div>
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-        <Card>
+        <Card className="bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-orange-500">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-600 text-sm">Total Assets</p>
-              <p className="text-3xl font-bold text-blue-600">{assets.length}</p>
+              <p className="text-white text-sm font-bold">Total Assets</p>
+              <p className="text-3xl font-bold text-orange-400">{assets.length}</p>
             </div>
             <span className="text-4xl">📦</span>
           </div>
         </Card>
 
-        <Card>
+        <Card className="bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-orange-500">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-600 text-sm">Assigned</p>
-              <p className="text-3xl font-bold text-green-600">
+              <p className="text-white text-sm font-bold">Assigned</p>
+              <p className="text-3xl font-bold text-green-400">
                 {assets.filter(a => a.status === "assigned").length}
               </p>
             </div>
@@ -100,11 +100,11 @@ export default function Assets() {
           </div>
         </Card>
 
-        <Card>
+        <Card className="bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-orange-500">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-600 text-sm">Available</p>
-              <p className="text-3xl font-bold text-orange-600">
+              <p className="text-white text-sm font-bold">Available</p>
+              <p className="text-3xl font-bold text-yellow-400">
                 {assets.filter(a => a.status === "instock").length}
               </p>
             </div>
@@ -112,11 +112,11 @@ export default function Assets() {
           </div>
         </Card>
 
-        <Card>
+        <Card className="bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-orange-500">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-600 text-sm">In Repair</p>
-              <p className="text-3xl font-bold text-orange-600">
+              <p className="text-white text-sm font-bold">In Repair</p>
+              <p className="text-3xl font-bold text-red-400">
                 {assets.filter(a => a.status === "repair").length}
               </p>
             </div>
@@ -126,50 +126,50 @@ export default function Assets() {
       </div>
 
       {/* Filters */}
-      <Card className="mb-8 bg-gray-50">
+      <Card className="mb-8 bg-gray-900 border-2 border-orange-500">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label className="form-label">🔍 Search</label>
+            <label className="form-label text-white font-bold">🔍 Search</label>
             <input 
               type="text"
               placeholder="Code, model, brand..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="input-base"
+              className="input-base bg-gray-900/50 border-2 border-orange-500 text-white placeholder-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-400 w-full"
             />
           </div>
 
           <div>
-            <label className="form-label">Status</label>
+            <label className="form-label text-white font-bold">Status</label>
             <select 
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              className="input-base"
+              className="input-base bg-gray-900/50 border-2 border-orange-500 text-white rounded-lg py-2 px-3 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-400 w-full"
             >
-              <option value="all">All Status</option>
-              <option value="assigned">Assigned</option>
-              <option value="instock">Available</option>
-              <option value="repair">In Repair</option>
-              <option value="missing">Missing</option>
+              <option value="all" className="bg-gray-900 text-white">All Status</option>
+              <option value="assigned" className="bg-gray-900 text-white">Assigned</option>
+              <option value="instock" className="bg-gray-900 text-white">Available</option>
+              <option value="repair" className="bg-gray-900 text-white">In Repair</option>
+              <option value="missing" className="bg-gray-900 text-white">Missing</option>
             </select>
           </div>
 
           <div>
-            <label className="form-label">Category</label>
+            <label className="form-label text-white font-bold">Category</label>
             <select 
               value={filterCategory}
               onChange={(e) => setFilterCategory(e.target.value)}
-              className="input-base"
+              className="input-base bg-gray-900/50 border-2 border-orange-500 text-white rounded-lg py-2 px-3 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-400 w-full"
             >
-              <option value="all">All Categories</option>
+              <option value="all" className="bg-gray-900 text-white">All Categories</option>
               {categories.map(cat => (
-                <option key={cat} value={cat}>{cat}</option>
+                <option key={cat} value={cat} className="bg-gray-900 text-white">{cat}</option>
               ))}
             </select>
           </div>
         </div>
 
-        <div className="text-sm text-gray-600 mt-4">
+        <div className="text-sm text-white font-medium mt-4">
           Showing <strong>{filteredAssets.length}</strong> of <strong>{assets.length}</strong> assets
         </div>
       </Card>

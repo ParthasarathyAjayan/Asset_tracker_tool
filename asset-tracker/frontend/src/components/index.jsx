@@ -68,7 +68,7 @@ export function Input({
     <div className="form-group">
       {label && <label className="form-label">{label}</label>}
       <div className="relative">
-        {icon && <span className="absolute left-3 top-3 text-gray-400">{icon}</span>}
+        {icon && <span className="absolute left-3 top-3 text-orange-400">{icon}</span>}
         <input 
           className={`input-base ${icon ? 'pl-10' : ''} ${error ? 'input-error' : ''}`}
           {...props}
@@ -108,7 +108,7 @@ export function Table({ columns, data, actions, onAction, isLoading = false }) {
     return (
       <div className="text-center py-12">
         <div className="inline-block animate-spin text-blue-600 text-3xl">⟳</div>
-        <p className="text-gray-600 mt-4">Loading...</p>
+        <p className="text-white font-medium mt-4">Loading...</p>
       </div>
     );
   }
@@ -153,7 +153,7 @@ export function Table({ columns, data, actions, onAction, isLoading = false }) {
             ))
           ) : (
             <tr>
-              <td colSpan={columns.length + (actions ? 1 : 0)} className="text-center py-8 text-gray-500">
+              <td colSpan={columns.length + (actions ? 1 : 0)} className="text-center py-8 text-white font-medium">
                 No data available
               </td>
             </tr>
@@ -174,7 +174,7 @@ export function Modal({ isOpen, onClose, title, children, actions }) {
         <Card className="w-full max-w-md relative animate-fadeIn">
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl"
+            className="absolute top-4 right-4 text-orange-400 hover:text-orange-300 text-2xl cursor-pointer"
           >
             ✕
           </button>
@@ -229,8 +229,8 @@ export function EmptyState({ icon = '📦', title, subtitle }) {
   return (
     <div className="text-center py-16">
       <div className="text-6xl mb-4">{icon}</div>
-      <h3 className="text-xl font-semibold text-gray-800 mb-2">{title}</h3>
-      {subtitle && <p className="text-gray-500">{subtitle}</p>}
+      <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
+      {subtitle && <p className="text-white font-medium">{subtitle}</p>}
     </div>
   );
 }

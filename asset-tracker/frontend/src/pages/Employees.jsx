@@ -105,7 +105,7 @@ export default function Employees() {
     { 
       key: "email", 
       label: "Email",
-      render: (value) => <span className="text-sm text-gray-600">{value}</span>
+      render: (value) => <span className="text-sm text-white font-medium">{value}</span>
     },
     { key: "location", label: "Location" },
   ];
@@ -114,27 +114,27 @@ export default function Employees() {
     <div className="page">
       {/* Header */}
       <div className="mb-8">
-        <h2 className="text-4xl font-bold text-gray-800 mb-2">Employees</h2>
-        <p className="text-gray-600">Manage your company's employees and their profiles</p>
+        <h2 className="text-4xl font-bold text-white mb-2">Employees</h2>
+        <p className="text-white font-medium">Manage your company's employees and their profiles</p>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-        <Card>
+        <Card className="bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-orange-500">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-600 text-sm">Total Employees</p>
-              <p className="text-3xl font-bold text-blue-600">{employees.length}</p>
+              <p className="text-white text-sm font-bold">Total Employees</p>
+              <p className="text-3xl font-bold text-orange-400">{employees.length}</p>
             </div>
             <span className="text-4xl">👥</span>
           </div>
         </Card>
 
-        <Card>
+        <Card className="bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-orange-500">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-600 text-sm">Locations</p>
-              <p className="text-3xl font-bold text-orange-600">
+              <p className="text-white text-sm font-bold">Locations</p>
+              <p className="text-3xl font-bold text-orange-400">
                 {new Set(employees.map(e => e.location)).size}
               </p>
             </div>
@@ -146,16 +146,17 @@ export default function Employees() {
       {/* Add Button */}
       <div className="mb-8">
         <Button 
-          variant="success"
+          variant="primary"
           onClick={() => setShowModal(true)}
           icon="➕"
+          className="bg-gradient-to-r from-orange-600 via-orange-500 to-red-600 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-200 border border-orange-400/50"
         >
           Add New Employee
         </Button>
       </div>
 
       {/* Search */}
-      <Card className="mb-8 bg-gray-50">
+      <Card className="mb-8 bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-orange-500">
         <Input 
           label="🔍 Search Employees"
           placeholder="By ID, name, or email..."
@@ -166,22 +167,22 @@ export default function Employees() {
 
       {/* Employees Table */}
       {filteredEmployees.length > 0 ? (
-        <Card>
+        <Card className="bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-orange-500">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="bg-gradient-to-r from-blue-600 to-blue-700">
+                <tr className="bg-gradient-to-r from-orange-600 to-red-600 border-b-2 border-orange-500">
                   {columns.map(col => (
-                    <th key={col.key} className="px-6 py-3 text-left text-white font-semibold">{col.label}</th>
+                    <th key={col.key} className="px-6 py-3 text-left text-white font-bold">{col.label}</th>
                   ))}
-                  <th className="px-6 py-3 text-left text-white font-semibold">Action</th>
+                  <th className="px-6 py-3 text-left text-white font-bold">Action</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredEmployees.map(e => (
-                  <tr key={e.employee_id} className="hover:bg-blue-50 transition-colors border-t border-gray-200">
+                  <tr key={e.employee_id} className="hover:bg-orange-500/10 transition-colors border-t border-gray-700">
                     {columns.map(col => (
-                      <td key={col.key} className="px-6 py-4">
+                      <td key={col.key} className="px-6 py-4 text-white font-medium">
                         {col.render ? col.render(e[col.key], e) : e[col.key]}
                       </td>
                     ))}
@@ -193,18 +194,20 @@ export default function Employees() {
                             variant="secondary"
                             disabled={true}
                             title={`Employee owns ${employeeAssets[e.employee_id]} asset(s)`}
+                            className="bg-orange-600/40 text-orange-200 border-2 border-orange-500"
                           >
                             Deactivate
                           </Button>
-                          <span className="text-xs text-orange-600 font-semibold">
+                          <span className="text-xs text-orange-400 font-bold">
                             ({employeeAssets[e.employee_id]} asset{employeeAssets[e.employee_id] > 1 ? 's' : ''})
                           </span>
                         </div>
                       ) : (
                         <Button 
                           size="sm"
-                          variant="danger"
+                          variant="primary"
                           onClick={() => deactivate(e.employee_id)}
+                          className="bg-red-600/80 hover:bg-red-500 text-white font-bold border border-red-500/50"
                         >
                           Deactivate
                         </Button>
@@ -215,16 +218,16 @@ export default function Employees() {
               </tbody>
             </table>
           </div>
-          <p className="text-sm text-gray-600 mt-4">
-            Showing <strong>{filteredEmployees.length}</strong> of <strong>{employees.length}</strong> employees
+          <p className="text-sm text-white font-medium mt-4">
+            Showing <strong className="text-white">{filteredEmployees.length}</strong> of <strong className="text-white">{employees.length}</strong> employees
           </p>
         </Card>
       ) : (
-        <Card className="text-center py-12">
+        <Card className="text-center py-12 bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-orange-500">
           <p className="text-4xl mb-4">👤</p>
-          <p className="text-gray-600">No employees found. Add your first employee to get started!</p>
+          <p className="text-white font-medium">No employees found. Add your first employee to get started!</p>
         </Card>
-      )}
+      )}}
 
       {/* Add Employee Modal */}
       <Modal 
